@@ -1,18 +1,20 @@
 === Caldera Forms ===
-Contributors: Desertsnowman
+Contributors: Desertsnowman, shelob9
 Tags: forms, formbuilder, form builder, contact form, contact, custom form, custom forms, forms creator
 Requires at least: 3.9
-Tested up to: 3.9.1
-Stable tag: 1.1.0
+Tested up to: 4.1
+Stable tag: 1.1.9.3
 License: GPLv2
 
 Create complex grid based, responsive forms easily with an easy to use drag and drop layout builder.
 
 == Description ==
-Caldera Forms is a free, simple form builder with a layout builder that enables you to create the format you want for your form. It is fully responsive and with form processors, it gives you flexibility to handle the form data how you need it.
+Caldera Forms is an easy to use free WordPress form builder with a layout builder that enables you to create the format you want for your form. It is fully responsive and with form processors, it gives you flexibility to handle the form data how you need it without needing a single line of code.
+
+Easy enough for everyday users to create forms, and powerful enough for php ninjas to extend.
 
 For issues and updates - Caldera Forms is on [GitHub](https://github.com/Desertsnowman/Caldera-Forms)
-Form Demos and Templates can be found on the demo site [Caldera Forms Demos](http://demo.calderaforms.com/)
+Form Docs, Demos & Templates can be found on the docs site (work in progress) [Caldera Forms Documentation](http://docs.calderaforms.com/)
 
 = A Few Feature Highlights =
 * Responsive Grid design based on Bootstrap 3
@@ -72,7 +74,146 @@ none yet.
 
 == Changelog ==
 
-= 1.1.0 (* August, 2014) =
+= 1.1.9.3 ( Febuary, 2015) =
+
+= Improvements =
+* Added ID or Name value selector for autopopulation on selects
+* Importer now creates a new form and wont overide the original.
+* Modals only close on the dismiss or cancel buttons. no longer on clicking the overlay. (better for management)
+* Added Filter: `caldera_forms_autoresponse_config` to allow modifiying the auto responder config
+* Added Filter: `caldera_forms_autoresponse_mail` to allow modifiying the auto responder mail object before sending
+* Changed the form ajax handler to use the more reliable wp admin-ajax method
+* Hooks to extend the autopopulate for option based fields ( caldera_forms_autopopulate_types & caldera_forms_autopopulate_type_config )
+
+= Updated =
+* Updated the reCaptcha to use Google's new version
+
+= Bug Fix =
+* a few small minor issues where resolved.
+
+
+= 1.1.9.2 (30 November, 2014) =
+
+= Bug Fix =
+* Issue with HTML binding not working. Solved but need to explore a little more later.
+* a few smaller bug fixes & optimisations
+
+= 1.1.9.1 (27 october, 2014) =
+
+= Bug Fix =
+* Sorted an issue with custom classes not being an array. *facepalm*
+
+= 1.1.9 (26 october, 2014) =
+
+= Fixed =
+* multi page validation on radios + checkboxes
+* minor bug fixes
+
+= Improved =
+* {embed_post:*} available in archive list
+
+= Added =
+* Live preview on shortcode in editor. really. It's awesome.
+* Additional filters to aid in auto-populating fields
+
+= 1.1.8 (7 October, 2014) =
+
+= Fixed =
+* Javascript error in reCapture field
+* No Default on dropdown field type results in correct blank option
+* Minor bug fixes
+
+= Improved =
+* Moved entry creation to just after pre-processor to allow for {entry_id} to be usable
+* Class wrapper locations improved for better addons
+
+= 1.1.7 (29 September, 2014) =
+
+= Fixed =
+* Javascript error on deleting entries in pin mode
+* Minor bug fixes
+
+= Improved =
+* CSV exporter improvements
+
+= Added =
+* Ajax submissions on by default
+
+= Updated =
+* Balrick.JS updated to 2.3
+* Ajax spinner removed and replaced with overlay blocking.
+* Addon licensing v3
+
+= 1.1.6 (25 September, 2014) =
+
+= Added =
+* Akismet spam filtering processor. Listed once Askismet plugin is active and activated.
+* Honeypot spamtrap option to place an invisible field in the form to trick spam bots.
+
+= Fixed =
+* Checkboxes, Radio & Dropdown select Show Values option corrected to show the values as intended.
+* Better Instancing of multiple forms on page.
+* Minor activation output error.
+* Minor Bugfixes.
+
+= 1.1.5 (18 September, 2014) =
+
+= Fixed =
+* corrected typos in the textdomain
+* Validation classes added to Alerts and not Forms.
+* Minor bug fixes that where annoying me
+
+= Updated =
+* Handlebars.js v2
+
+= Added =
+* Gravatar field for live display of gravatar.
+
+= 1.1.4 (17 August, 2014) =
+
+= Improved =
+* Loading speed improved on form editor
+* More Control hooks for form control
+
+= Fixed =
+* "Contains" clause in conditionals works correctly
+* multi-site fix
+
+= Added =
+* option to clone form
+* disable condition option for fields
+* 'entry_id' magic tag
+* Magic tag enabled all mailer fields
+
+
+= 1.1.3 (12 August, 2014) =
+
+= Fixed =
+* foreach warning in new installs.
+* language load corrected
+* minor bugs
+
+= 1.1.2 (6 August, 2014) =
+
+= Fixed =
+* datepicker clashing with jquery ui.
+* Conditionals working correctly again round 2.
+* validation across pages
+* minor bugs
+
+= Added =
+* Pin to menu option to make direct access to entries way faster
+* Extend menu item for addons and licenses 
+* Community menu item for sharing stuff
+
+
+= 1.1.1 (4 August, 2014) =
+
+= Fixed =
+* (partly) Success Message magic tags work on ajax mode. not yet on standard submit.
+* Conditionals working correctly again.
+
+= 1.1.0 (1 August, 2014) =
 
 = Added =
 * Variables tab: create custom magic tags and URL return values by combining other tags, processor values and static strings.
