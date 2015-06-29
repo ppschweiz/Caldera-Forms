@@ -331,21 +331,6 @@ class Caldera_Forms {
 
 	public static function captcha_check($value, $field, $form){
 
-		if( !isset( $_POST['g-recaptcha-response'] ) || empty( $_POST['g-recaptcha-response'] )){
-			return new WP_Error( 'error' );
-		}
-
-		$args = array(
-			'secret'	=>	$field['config']['private_key'],
-			'response'	=>	sanitize_text_field( $_POST['g-recaptcha-response'] )
-		);
-
-		$request = wp_remote_get( 'https://www.google.com/recaptcha/api/siteverify?' . build_query($args) );
-		$result = json_decode( wp_remote_retrieve_body( $request ) );
-		if( empty( $result->success ) ){
-			return new WP_Error( 'error', __("The wasn't entered correct.", 'caldera-forms') . ' <a href="#" class="reset_' . sanitize_text_field( $_POST[ $field['ID'] ] ) . '">' . __("Reset", 'caldera-forms') . '<a>.' );
-		}
-
 		return true;
 
 	}
@@ -1302,32 +1287,6 @@ class Caldera_Forms {
 					"template"	=>	CFCORE_PATH . "fields/file/config_template.php"
 				)
 			),
-			'recaptcha' => array(
-				"field"		=>	__("reCAPTCHA", "caldera-forms"),
-				"description" => __('reCAPTCHA anti-spam field', 'caldera-forms'),
-				"file"		=>	CFCORE_PATH . "fields/recaptcha/field.php",
-				"category"	=>	__("Special", "caldera-forms"),
-				"handler"	=>	array($this, 'captcha_check'),
-				"capture"	=>	false,
-				"setup"		=>	array(
-					"template"	=>	CFCORE_PATH . "fields/recaptcha/config.php",
-					"preview"	=>	CFCORE_PATH . "fields/recaptcha/preview.php",
-					"not_supported"	=>	array(
-						'hide_label',
-						'caption',
-						'required'
-					),
-					"scripts"	=> array(
-						"https://www.google.com/recaptcha/api.js"
-					)
-				),
-				"scripts"	=> array(
-					"https://www.google.com/recaptcha/api.js"
-				),
-				"styles"	=> array(
-					//CFCORE_URL . "fields/recaptcha/style.css"
-				),
-			),
 			'html' => array(
 				"field"		=>	__("HTML", "caldera-forms"),
 				"description" => __('Add text/html content', 'caldera-forms'),
@@ -2140,7 +2099,7 @@ class Caldera_Forms {
 								$out = array();
 								foreach($form['fields'] as $field_id=>$field){
 					
-									if( in_array( $field['type'], array('button', 'recaptcha', 'html' ) ) ){
+									if( in_array( $field['type'], array('button', 'html' ) ) ){
 										continue;
 									}
 									// filter the field to get field data
