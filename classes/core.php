@@ -1302,32 +1302,6 @@ class Caldera_Forms {
 					"template"	=>	CFCORE_PATH . "fields/file/config_template.php"
 				)
 			),
-			'recaptcha' => array(
-				"field"		=>	__("reCAPTCHA", "caldera-forms"),
-				"description" => __('reCAPTCHA anti-spam field', 'caldera-forms'),
-				"file"		=>	CFCORE_PATH . "fields/recaptcha/field.php",
-				"category"	=>	__("Special", "caldera-forms"),
-				"handler"	=>	array($this, 'captcha_check'),
-				"capture"	=>	false,
-				"setup"		=>	array(
-					"template"	=>	CFCORE_PATH . "fields/recaptcha/config.php",
-					"preview"	=>	CFCORE_PATH . "fields/recaptcha/preview.php",
-					"not_supported"	=>	array(
-						'hide_label',
-						'caption',
-						'required'
-					),
-					"scripts"	=> array(
-						"https://www.google.com/recaptcha/api.js"
-					)
-				),
-				"scripts"	=> array(
-					"https://www.google.com/recaptcha/api.js"
-				),
-				"styles"	=> array(
-					//CFCORE_URL . "fields/recaptcha/style.css"
-				),
-			),
 			'html' => array(
 				"field"		=>	__("HTML", "caldera-forms"),
 				"description" => __('Add text/html content', 'caldera-forms'),
