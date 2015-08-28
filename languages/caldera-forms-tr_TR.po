@@ -1,33 +1,33 @@
+# Yavuz Uyar <yvzuyr@gmail.com>, 2015.
 msgid ""
 msgstr ""
 "Project-Id-Version: Caldera Forms\n"
-"POT-Creation-Date: 2015-08-24 12:16+0200\n"
-"PO-Revision-Date: 2015-08-24 12:17+0200\n"
-"Last-Translator: \n"
-"Language-Team: Notecopies <hola@notecopies.es>\n"
-"Language: es_ES\n"
+"POT-Creation-Date: 2015-08-24 12:17+0200\n"
+"PO-Revision-Date: 2015-08-24 12:18+0200\n"
+"Last-Translator: Yavuz Uyar <yvzuyr@gmail.com>\n"
+"Language-Team: Yavuz Uyar\n"
+"Language: tr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Poedit 1.8.4\n"
 "X-Poedit-Basepath: .\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-KeywordsList: __;_e\n"
 "X-Poedit-SearchPath-0: ..\n"
 
 #: ../classes/Caldera_Forms_Save_Final.php:152 ../ui/panels/emailer.php:4
 msgid "Caldera Forms Notification"
-msgstr "Notificación Caldera Forms"
+msgstr "Caldera Formları Bildirimleri"
 
 #: ../classes/admin.php:124
 msgid "Invalid Form."
-msgstr "Formulario Incorrecto"
+msgstr "Geçersiz Form."
 
 #: ../classes/admin.php:143
-#, fuzzy
 msgid "Starter Contact Form"
-msgstr "Color de estrellas"
+msgstr "Yeni Başlayanlar İçin İletişim Formu"
 
 #: ../classes/admin.php:147
 msgid "Variable Pricing Form, with add-on products."
@@ -38,216 +38,215 @@ msgid "Registration Form, with optional additional participants."
 msgstr ""
 
 #: ../classes/admin.php:174
-#, fuzzy
 msgid "Form Template"
-msgstr "Nombre de Formulario"
+msgstr "Form şablonu"
 
 #: ../classes/admin.php:177
 msgid "no template - blank form"
-msgstr ""
+msgstr "şablon yok - boş form"
 
 #: ../classes/admin.php:284 ../classes/admin.php:285 ../classes/admin.php:387
 #: ../ui/entries_toolbar.php:27
 msgid "Trash"
-msgstr "Papelera"
+msgstr "Çöp"
 
 #: ../classes/admin.php:285 ../classes/admin.php:387
 #: ../ui/admin_templates.php:9
 msgid "Restore"
-msgstr "Restaurar"
+msgstr "Geri Yükle"
 
 #: ../classes/admin.php:385 ../ui/admin_templates.php:110
 msgid "Entry"
-msgstr "Entrada"
+msgstr "Girdi"
 
 #: ../classes/admin.php:385
 msgid "View"
-msgstr "Vista"
+msgstr "Görüntüle"
 
 #: ../classes/admin.php:427 ../classes/admin.php:435
 msgid "Add Form to Page"
-msgstr "Añadir Formulario a Página"
+msgstr "Fomu Sayfaya Ekle"
 
 #: ../classes/admin.php:428
 msgid "Insert Form Shortcode"
-msgstr "Insertar Desde Shortcode"
+msgstr "Form Kısa Kodu Ekle"
 
 #: ../classes/admin.php:428 ../classes/widget.php:8
 msgid "Caldera Form"
-msgstr "Formulario Caldera"
+msgstr "Caldera Formu"
 
 #: ../classes/admin.php:455 ../ui/admin.php:124
 msgid "Deactivate"
-msgstr "Desactivar"
+msgstr "Devre Dışı Bırak"
 
 #: ../classes/admin.php:459 ../ui/admin.php:124
 msgid "Activate"
-msgstr "Activar"
+msgstr "Etkinleştir"
 
 #: ../classes/admin.php:745 ../classes/admin.php:751 ../classes/admin.php:757
 #: ../classes/admin.php:758 ../classes/admin.php:792 ../classes/admin.php:796
 #: ../includes/filter_addon_plugins.php:50 ../ui/admin.php:32
 #: ../ui/community.php:5 ../ui/edit.php:487 ../ui/extend.php:5
 msgid "Caldera Forms"
-msgstr "Caldera Forms"
+msgstr "Caldera Formları"
 
 #: ../classes/admin.php:746
 msgid "Caldera Forms Admin"
-msgstr "Administrar Caldera Forms"
+msgstr "Caldera Formları Yöneticisi"
 
 #: ../classes/admin.php:746
 msgid "Forms"
-msgstr "Formularios"
+msgstr "Formlar"
 
 #: ../classes/admin.php:757 ../ui/community.php:8
 msgid "Community"
-msgstr "Comunidad"
+msgstr "Topluluk"
 
 #: ../classes/admin.php:758 ../ui/extend.php:8
 msgid "Extend"
-msgstr "Mejoras"
+msgstr "Uzatmak"
 
 #: ../classes/admin.php:1017 ../classes/admin.php:1179
 msgid "Sorry, please try again"
-msgstr "Lo sentimos, inténtalo de nuevo por favor"
+msgstr "Üzgünüm, lütfen tekrar deneyin"
 
 #: ../classes/admin.php:1017
 msgid "Form Delete Error"
-msgstr "Error al eliminar"
+msgstr "Formu Silme Hatası"
 
 #: ../classes/admin.php:1170
 msgid "Sorry, File is not valid."
-msgstr "Lo sentimos, archivo no válido"
+msgstr "Üzgünüz, dosya geçerli değil."
 
 #: ../classes/admin.php:1170 ../classes/admin.php:1174
 #: ../classes/admin.php:1179
 msgid "Form Import Error"
-msgstr "Error al importar"
+msgstr "Form İçe Aktarma Hatası"
 
 #: ../classes/admin.php:1174
 msgid "Sorry, File not uploaded."
-msgstr "Lo sentimos, el archivo no se ha subido"
+msgstr "Üzgünüz, Dosya yüklenmedi."
 
 #: ../classes/admin.php:1188
 msgid "Form does not exist."
-msgstr "El formulario no existe"
+msgstr "Form mevcut değil."
 
 #: ../classes/admin.php:1229
 msgid "Export selection has expired"
-msgstr "La exportación ha caducado"
+msgstr "Dışa aktarma seçeneğinin süresi doldu"
 
 #: ../classes/admin.php:1229
 msgid "Export Expired"
-msgstr "Exportación caducada"
+msgstr "Dışa Aktarmanın Süresi Doldu"
 
 #: ../classes/admin.php:1404 ../ui/edit.php:585
 msgid "Form has been successfully submitted. Thank you."
-msgstr "El formulario ha sido correctamente enviado. Gracias."
+msgstr "Form başarıyla gönderildi. Teşekkürler."
 
 #: ../classes/admin.php:1447 ../classes/admin.php:1463
 msgid "Layout"
-msgstr "Diseño"
+msgstr "Düzen"
 
 #: ../classes/admin.php:1465
 msgid "Layout Builder"
-msgstr "Diseñador"
+msgstr "Düzen Oluşturucu"
 
 #: ../classes/admin.php:1475
 msgid "Pages"
-msgstr "Páginas"
+msgstr "Sayfalar"
 
 #: ../classes/admin.php:1477
 msgid "Form Pages"
-msgstr "Páginas de formulario"
+msgstr "Form Sayfaları"
 
 #: ../classes/admin.php:1481 ../classes/admin.php:1483
 msgid "Conditions"
-msgstr "Condicionales"
+msgstr "Durumlar"
 
 #: ../classes/admin.php:1487
 msgid "Processors"
-msgstr "Procesadores"
+msgstr "İişlemciler"
 
 #: ../classes/admin.php:1489 ../ui/panels/processors.php:166
 msgid "Form Processors"
-msgstr "Procesadores de formulario"
+msgstr "Form İşlemcileri"
 
 #: ../classes/admin.php:1493 ../classes/admin.php:1495
 #: ../ui/panels/variables.php:83
 msgid "Variables"
-msgstr "Variables"
+msgstr "Değişkenler"
 
 #: ../classes/admin.php:1502
 msgid "Responsive"
-msgstr "Adaptabilidad"
+msgstr "Uyumlu"
 
 #: ../classes/admin.php:1504
 msgid "Resposive Settings"
-msgstr "Opciones de adaptabilidad"
+msgstr "Uyumluluk Ayarları"
 
 #: ../classes/admin.php:1508
 msgid "Grid Collapse"
-msgstr "División modular"
+msgstr "Izgarayı Daralt"
 
 #: ../classes/admin.php:1510
 msgid ""
 "Set the smallest screen size at which to collapse the grid. (based on "
 "Bootstrap 3.0)"
 msgstr ""
-"Pon el tamaño de pantalla mínimo necesario para que la estructura modular "
-"del diseño se divida y se adapte. (basado en Bootstrap 3.0)"
+"Izgara daraltmak için en küçük ekran boyutunu ayarlayın. (Bootstrap 3.0 "
+"tabanlı)"
 
 #: ../classes/admin.php:1517
 msgid "Maintain grid always"
-msgstr "Mantener la estructura siempre"
+msgstr "Her zaman ızgarayı koru"
 
 #: ../classes/admin.php:1537 ../ui/panels/emailer.php:32
 msgid "Mailer"
-msgstr "Envío"
+msgstr "Posta Göndericileri"
 
 #: ../classes/admin.php:1539
 msgid "Email Notification Settings"
-msgstr "Opciones de notificación"
+msgstr "E-posta Bildirimi Ayarları"
 
 #: ../classes/core.php:396
 msgid "The wasn't entered correct."
-msgstr "Eso no se ha introducido correctamente."
+msgstr "Doğru girilmedi."
 
 #: ../classes/core.php:396 ../fields/button/config_template.php:9
 msgid "Reset"
-msgstr "Restaurar valores"
+msgstr "Sıfırla"
 
 #: ../classes/core.php:545 ../classes/core.php:559 ../classes/core.php:2991
 msgid "Permission denied."
-msgstr "Permiso denegado."
+msgstr "Erişim Engellendi."
 
 #: ../classes/core.php:787
 msgid "Auto Responder"
-msgstr "Auto-respuesta"
+msgstr "Otomatik Yanıtlayıcı"
 
 #: ../classes/core.php:788
 msgid "Sends out an auto response e-mail"
-msgstr "Envía un mensaje de auto-respuesta"
+msgstr "Otomatik yanıt e-postası gönderir"
 
 #: ../classes/core.php:792
 msgid "Thank you for contacting us"
-msgstr "Gracias por contactar con nosotros"
+msgstr "Bizimle iletişime geçtiğiniz için teşekkür ederiz"
 
 #: ../classes/core.php:796
 msgid "Redirect"
-msgstr "Redireccionar"
+msgstr "Yönlendirme"
 
 #: ../classes/core.php:797
 msgid "Redirects user to URL on successful submit"
-msgstr "Redirecciona a una URL tras un envio con éxito"
+msgstr "Başarılı gönderilerde kullanıcıları URL'ye yönlendirir"
 
 #: ../classes/core.php:802
 msgid "Increment Value"
-msgstr "Incrementar valor"
+msgstr "Artım Değeri"
 
 #: ../classes/core.php:803
 msgid "Increment a value per entry."
-msgstr "Incrementar valor por entrada"
+msgstr "Giriş başına değeri artırmak."
 
 #: ../classes/core.php:817
 msgid "Akismet"
@@ -255,89 +254,89 @@ msgstr "Akismet"
 
 #: ../classes/core.php:818
 msgid "Anti-spam filtering"
-msgstr "Filtro anti-spam"
+msgstr "Anti-spam filtreleme"
 
 #: ../classes/core.php:866
 msgid "Akismet not setup."
-msgstr "Akismet no está configurado"
+msgstr "Akismet kurulu değil."
 
 #: ../classes/core.php:1017
 msgid "Calculation"
-msgstr "Operaciones"
+msgstr "Hesaplama"
 
 #: ../classes/core.php:1020 ../classes/core.php:1042 ../classes/core.php:1079
 #: ../classes/core.php:1162 ../classes/core.php:1265
 msgid "Special"
-msgstr "Especial"
+msgstr "Özel"
 
 #: ../classes/core.php:1020
 msgid "Math"
-msgstr "Cálculo"
+msgstr "Matematik"
 
 #: ../classes/core.php:1021
 msgid "Calculate values"
-msgstr "Calcular valores"
+msgstr "Değerleri hesapla"
 
 #: ../classes/core.php:1028
 msgid "Total"
-msgstr "Total"
+msgstr "Toplam"
 
 #: ../classes/core.php:1040
 msgid "Range Slider"
-msgstr "Rango deslizable"
+msgstr "Aralık Sürgüsü"
 
 #: ../classes/core.php:1043
 msgid "Range Slider input field"
-msgstr "Campo de rango deslizable"
+msgstr "Aralık Sürgüsü giriş alanı"
 
 #: ../classes/core.php:1077
 msgid "Star Rating"
-msgstr "Valoración con estrellas"
+msgstr "Yıldız Dereceleme"
 
 #: ../classes/core.php:1079
 msgid "Feedback"
-msgstr "Reacciones"
+msgstr "Geri bildirim"
 
 #: ../classes/core.php:1080
 msgid "Star rating input for feedback"
-msgstr "Campo de valoración para recoger opiniones"
+msgstr "Geri bildirim için yıldız derecelemesi"
 
 #: ../classes/core.php:1112
 msgid "Phone Number"
-msgstr "Número de teléfono"
+msgstr "Telefon Numarası"
 
 #: ../classes/core.php:1113
 msgid "Phone number with masking"
-msgstr "Número de teléfono con máscara"
+msgstr "Maskeleme ile telefon numarası"
 
 #: ../classes/core.php:1115 ../classes/core.php:1137 ../classes/core.php:1206
 #: ../classes/core.php:1243 ../classes/core.php:1253 ../classes/core.php:1350
 #: ../classes/core.php:1376
 msgid "Text Fields"
-msgstr "Campos de texto"
+msgstr "Metin Alanları"
 
 #: ../classes/core.php:1115
 msgid "User"
-msgstr "Usuario"
+msgstr "Kullanıcı"
 
 #: ../classes/core.php:1134 ../classes/core.php:1135
 msgid "Single Line Text"
-msgstr "Campo de texto"
+msgstr "Tek Satırlık Yazı"
 
 #: ../classes/core.php:1137 ../classes/core.php:1152 ../classes/core.php:1206
 #: ../classes/core.php:1222 ../classes/core.php:1243 ../classes/core.php:1253
 #: ../classes/core.php:1294 ../classes/core.php:1313 ../classes/core.php:1332
 #: ../ui/edit.php:215
 msgid "Basic"
-msgstr "Básico"
+msgstr "Basit"
 
 #: ../classes/core.php:1148 ../classes/core.php:1152
 msgid "File"
-msgstr "Fichero"
+msgstr "Dosya"
 
 #: ../classes/core.php:1149
 msgid "File Uploader"
-msgstr "Cargador de archivos"
+msgstr "Dosya Yükleyici"
 
 #: ../classes/core.php:1159
 msgid "reCAPTCHA"
@@ -345,7 +344,7 @@ msgstr "reCAPTCHA"
 
 #: ../classes/core.php:1160
 msgid "reCAPTCHA anti-spam field"
-msgstr "Campo anti-spam reCAPTCHA"
+msgstr "reCAPTCHA anti-spam alan"
 
 #: ../classes/core.php:1185
 msgid "HTML"
@@ -353,245 +352,238 @@ msgstr "HTML"
 
 #: ../classes/core.php:1186
 msgid "Add text/html content"
-msgstr "Añadir contenido html/texto"
+msgstr "Metin/html içeriği ekleyin"
 
 #: ../classes/core.php:1188 ../fields/html/config_template.php:2
 #: ../processors/akismet/config.php:20
 msgid "Content"
-msgstr "Contenido"
+msgstr "Içerik"
 
 #: ../classes/core.php:1203 ../classes/core.php:1204
 msgid "Hidden"
-msgstr "Oculto"
+msgstr "Gizli"
 
 #: ../classes/core.php:1219 ../fields/button/config_template.php:6
 msgid "Button"
-msgstr "Botón"
+msgstr "Buton"
 
 #: ../classes/core.php:1220
 msgid "Button, Submit and Reset types"
-msgstr "Tipos botón, enviar y reestablecer"
+msgstr "Buton, Gönder ve Sıfırlama türleri"
 
 #: ../classes/core.php:1222
 msgid "Buttons"
-msgstr "Botones"
+msgstr "Butonlar"
 
 #: ../classes/core.php:1240 ../classes/core.php:1241
 msgid "Email Address"
-msgstr "Dirección email"
+msgstr "E-posta Adresi"
 
 #: ../classes/core.php:1250 ../classes/core.php:1251
 msgid "Paragraph Textarea"
-msgstr "Área de texto"
+msgstr "Metin Alanı"
 
 #: ../classes/core.php:1263 ../classes/core.php:1264
 msgid "Toggle Switch"
-msgstr "Pestañas seleccionables"
+msgstr "Anahtar"
 
 #: ../classes/core.php:1265 ../classes/core.php:1294 ../classes/core.php:1313
 #: ../classes/core.php:1332 ../classes/core.php:1405
 msgid "Select Options"
-msgstr "Opciones desplegables"
+msgstr "Seçme Ayarları"
 
 #: ../classes/core.php:1291 ../classes/core.php:1292
 msgid "Dropdown Select"
-msgstr "Lista desplegable"
+msgstr "Açılır liste"
 
 #: ../classes/core.php:1310 ../classes/core.php:1311
 msgid "Checkbox"
-msgstr "Casillas seleccionables"
+msgstr "Onay kutusu"
 
 #: ../classes/core.php:1329 ../classes/core.php:1330
 msgid "Radio"
-msgstr "Lista de opciones"
+msgstr "Radyo"
 
 #: ../classes/core.php:1347 ../classes/core.php:1348
 msgid "Date Picker"
-msgstr "Selección de fecha"
+msgstr "Tarih Seçici"
 
 #: ../classes/core.php:1350 ../classes/core.php:1376
 msgid "Pickers"
-msgstr "Selectores"
+msgstr "Seçiciler"
 
 #: ../classes/core.php:1374 ../classes/core.php:1375
 msgid "Color Picker"
-msgstr "Selección de color"
+msgstr "Renk Seçici"
 
 #: ../classes/core.php:1402
 msgid "State/ Province Select"
-msgstr "Lista de Estados/Provincias"
+msgstr "Eyalet / İl Seçiniz"
 
 #: ../classes/core.php:1403
 msgid "Dropdown select for US states and Canadian provinces."
-msgstr "Lista desplegable para los estados de EEUU y las provincias de Canadá"
+msgstr "ABD ve Canada için açılır liste seçici"
 
 #: ../classes/core.php:1417
-#, fuzzy
 msgid "Autocomplete"
-msgstr "Auto-rellenar."
+msgstr "Otomatik Tamamlama"
 
 #: ../classes/core.php:1419
-#, fuzzy
 msgid "Pickers,Select Options"
-msgstr "Opciones desplegables"
+msgstr "Seçiciler, Seçenekleri Seçin"
 
 #: ../classes/core.php:1838
 msgid "System Tags"
-msgstr "Etiquetas de sistema"
+msgstr "Sistem Etiketler"
 
 #: ../classes/core.php:2652 ../classes/core.php:2686
 msgid "Mailer Debug"
-msgstr "Depurador de correo"
+msgstr "Hata ayıklama"
 
 #: ../classes/core.php:2752 ../classes/core.php:3688
 msgid "Invalid form ID"
-msgstr "ID de formulario inválida"
+msgstr "Geçersiz formu kimliği"
 
 #: ../classes/core.php:3001 ../classes/core.php:3006 ../classes/core.php:3013
 #: ../classes/core.php:4088 ../classes/core.php:4104 ../classes/core.php:4107
 #: ../classes/core.php:4111
 msgid "Permission denied or entry does not exist."
-msgstr "Permiso denegado o la entrada no existe"
+msgstr "İzin verilmedi veya giriş yok."
 
 #: ../classes/core.php:3053
 msgid "is required"
-msgstr "es obligatorio"
+msgstr "gereklidir"
 
 #: ../classes/core.php:3938 ../classes/core.php:3944
 msgid "Form is currently not active."
-msgstr "El formulario no está activo actualmente."
+msgstr "Form şu anda etkin değil."
 
 #: ../classes/core.php:4393
 msgid "WARNING: Form is in Mailer Debug mode. Disable before going live."
 msgstr ""
-"AVISO: El formulario está en modo Depurador de correo. Desactívelo antes de "
-"publicarlo."
+"UYARI: Form hata ayıklama modunda. Yayınlamadan önce devre dışı bırakın."
 
 #: ../classes/widget.php:43
 msgid "Title"
-msgstr "Título"
+msgstr "Başlık"
 
 #: ../classes/widget.php:47 ../ui/admin.php:52 ../ui/admin.php:84
 msgid "Form"
-msgstr "Formulario"
+msgstr "Form"
 
 #: ../fields/button/config_template.php:2
 msgid "Type"
-msgstr "Tipo"
+msgstr "Tür"
 
 #: ../fields/button/config_template.php:5
 msgid "Submit"
-msgstr "Enviar"
+msgstr "Gönder"
 
 #: ../fields/button/config_template.php:7
 msgid "Next Page"
-msgstr "Página Siguiente"
+msgstr "Sonraki Sayfa"
 
 #: ../fields/button/config_template.php:8
 msgid "Previous Page"
-msgstr "Página Anterior"
+msgstr "Önceki Sayfa"
 
 #: ../fields/button/config_template.php:14
 msgid "Class"
-msgstr "Clase"
+msgstr "Sınıf"
 
 #: ../fields/calculation/config.php:2
 msgid "Element"
-msgstr "Elemento"
+msgstr "Öge"
 
 #: ../fields/calculation/config.php:8
 msgid "Classes"
-msgstr "Clases"
+msgstr "Sınıflar"
 
 #: ../fields/calculation/config.php:14
 msgid "Before"
-msgstr "Anterior"
+msgstr "Önce"
 
 #: ../fields/calculation/config.php:20
 msgid "After"
-msgstr "Posterior"
+msgstr "Sonra"
 
 #: ../fields/calculation/config.php:27
 msgid "Money Format"
-msgstr "Formato de moneda"
+msgstr "Para Biçimi"
 
 #: ../fields/calculation/config.php:32
 msgid "Separator"
-msgstr "Separador"
+msgstr "Ayraç"
 
 #: ../fields/calculation/config.php:35
 msgid "Setup a custom thousand separator. e.g 10,000.00 or 10.000.00"
-msgstr ""
-"Configurar un separador de miles personalizado. Por ejemplo: 10,000.00 o "
-"10.000,00"
+msgstr "Özel bir ayırıcı ayarla. Örneğin 10,000.00 veya 10.000.00"
 
 #: ../fields/calculation/config.php:41
 msgid "Manual Formula"
-msgstr "Fórmula manual"
+msgstr "Manuel Formül"
 
 #: ../fields/calculation/config.php:54
 msgid "Add Operator Group"
-msgstr "Añadir grupo de operador"
+msgstr "Operatör Grubu Ekle"
 
 #: ../fields/calculation/config.php:63
 msgid "Use %field_slug% as field value variables"
-msgstr "Usar %field_slug% como variables de valor de campo"
+msgstr "Alan değeri değişkenleri olarak % field_slug% kullanın"
 
 #: ../fields/checkbox/config_template.php:3
 #: ../fields/radio/config_template.php:4
 msgid "Inline"
-msgstr "Una línea"
+msgstr "Satıriçi"
 
 #: ../fields/color_picker/setup.php:2 ../fields/date_picker/setup.php:2
 #: ../fields/email/config.php:8 ../fields/paragraph/config_template.php:14
 #: ../fields/phone/config.php:8 ../fields/range_slider/config.php:10
 #: ../fields/text/config.php:8
 msgid "Default"
-msgstr "Por defecto"
+msgstr "Varsayılan"
 
 #: ../fields/color_picker/setup.php:2
 msgid "Color"
-msgstr "Color"
+msgstr "Renk"
 
 #: ../fields/date_picker/setup.php:8
 msgid "Format"
-msgstr "Formato"
+msgstr "Biçim"
 
 #: ../fields/date_picker/setup.php:14
 msgid "Autoclose"
-msgstr "Autocierre"
+msgstr "Otomatik Kapatma"
 
 #: ../fields/date_picker/setup.php:16
 msgid "Enable autoclose"
-msgstr "Activar autocierre"
+msgstr "Otomatik Kapatmayı Etkinleştir"
 
 #: ../fields/date_picker/setup.php:17
 msgid ""
 "If enabled, the date picker will automatically close after selecting the "
 "final input"
-msgstr ""
-"Si está activo, el selector de fecha se cerrará automáticamente después de "
-"seleccionar el último valor"
+msgstr "Etkinse, tarih seçici otomatik son girişi seçtikten sonra kapanacak"
 
 #: ../fields/date_picker/setup.php:21
 msgid "Start View"
-msgstr "Vista de inicio"
+msgstr "Başlangıç Görünümü"
 
 #: ../fields/date_picker/setup.php:24
 msgid "Month (Default)"
-msgstr "Mes (Predeterminado)"
+msgstr "Ay (Varsayılan)"
 
 #: ../fields/date_picker/setup.php:25
 msgid "Year"
-msgstr "Año"
+msgstr "Yıl"
 
 #: ../fields/date_picker/setup.php:26
 msgid "Decade"
-msgstr "Década"
+msgstr "Onyıl"
 
 #: ../fields/date_picker/setup.php:28
 msgid "The starting view of the date picker (month, year, decade)"
-msgstr "La visualización inicial del selector de fecha (mes, año, década)"
+msgstr "Tarih seçicinin başlangıç görünümü (ay, yıl, onyıl)"
 
 #: ../fields/date_picker/setup.php:32
 msgid "Start Date"
@@ -611,166 +603,166 @@ msgstr ""
 
 #: ../fields/date_picker/setup.php:46
 msgid "language"
-msgstr "lenguaje"
+msgstr "dil"
 
 #: ../fields/date_picker/setup.php:114
 msgid "Language to use. e.g. pt-BR"
-msgstr "El lenguaje a utilizar. Ejemplo: es-ES"
+msgstr "Kullanılacak dil. Örneğin pt-BR"
 
 #: ../fields/dropdown/config_template.php:2 ../fields/email/config.php:2
 #: ../fields/paragraph/config_template.php:2 ../fields/phone/config.php:2
 #: ../fields/select2/field/config.php:3 ../fields/text/config.php:2
 msgid "Placeholder"
-msgstr "Texto interior"
+msgstr "Yer Tutucu"
 
 #: ../fields/file/config_template.php:2
 msgid "Attach to mailer"
-msgstr "Adjuntar al envío de correo"
+msgstr "E-posta göndericiye ekle"
 
 #: ../fields/file/config_template.php:9
 msgid "Allow Multiple"
-msgstr ""
+msgstr "Çokluya izin ver"
 
 #: ../fields/file/config_template.php:16
 msgid "Allowed Types"
-msgstr "Tipos permitidos"
+msgstr "İzin Verilen Türler"
 
 #: ../fields/file/config_template.php:19
 msgid "Comma separated eg. jpg,pdf,txt"
-msgstr "Separado por comas. Ejemplo: jpg,pdf,txt"
+msgstr "Virgülle ayrılmış örn. jpg, pdf, txt"
 
 #: ../fields/gravatar/config.php:2
 msgid "Email Field"
-msgstr "Campo email"
+msgstr "E-posta Alanı"
 
 #: ../fields/gravatar/config.php:10
 msgid "Mystery Man"
-msgstr "Hombre Misterioso"
+msgstr "Gizemli Adam"
 
 #: ../fields/gravatar/config.php:11
 msgid "Blank"
-msgstr "Vacío"
+msgstr "Boş"
 
 #: ../fields/gravatar/config.php:12
 msgid "Gravatar Logo"
-msgstr "Logo Gavatar"
+msgstr "Gravatar Logosu"
 
 #: ../fields/gravatar/config.php:13
 msgid "Identicon (Generated)"
-msgstr "Identicon (Generado)"
+msgstr "Identicon (Oluşturulmuş)"
 
 #: ../fields/gravatar/config.php:14
 msgid "Wavatar (Generated)"
-msgstr "Wavatar (Generado)"
+msgstr "Wavatar (Oluşturulmuş)"
 
 #: ../fields/gravatar/config.php:15
 msgid "MonsterID (Generated)"
-msgstr "MonsterID (Generado)"
+msgstr "MonsterID (Oluşturulmuş)"
 
 #: ../fields/gravatar/config.php:16
 msgid "Retro (Generated)"
-msgstr "Retro (Generado)"
+msgstr "Retro (Oluşturulmuş)"
 
 #: ../fields/gravatar/config.php:21
 msgid "Fallback"
-msgstr "Respaldo"
+msgstr "Geri Çekil"
 
 #: ../fields/gravatar/config.php:35
 msgid "Size"
-msgstr "Tamaño"
+msgstr "Boyut"
 
 #: ../fields/gravatar/config.php:42
 msgid "Border Color"
-msgstr "Color de Borde"
+msgstr "Kenar Çizgisi Rengi"
 
 #: ../fields/gravatar/config.php:49
 msgid "Border Size"
-msgstr "Tamaño de Borde"
+msgstr "Kenar Çizgisi Boyutu"
 
 #: ../fields/gravatar/config.php:56
 msgid "Border Radius"
-msgstr "Bordes Redondeados"
+msgstr "Kenar Yuvarlaklığı"
 
 #: ../fields/hidden/setup.php:2 ../ui/edit.php:151 ../ui/edit.php:180
 #: ../ui/panels/variables.php:12
 msgid "Value"
-msgstr "Valor"
+msgstr "Değer"
 
 #: ../fields/paragraph/config_template.php:8
 msgid "Rows"
-msgstr "Filas"
+msgstr "Satırlar"
 
 #: ../fields/phone/config.php:14
 msgid "Style"
-msgstr "Estilo"
+msgstr "Biçim"
 
 #: ../fields/phone/config.php:16
 msgid "Local"
-msgstr "Local"
+msgstr "Yerel"
 
 #: ../fields/phone/config.php:18
 msgid "International"
-msgstr "Internacional"
+msgstr "Uluslararası"
 
 #: ../fields/phone/config.php:20
 msgid "Custom"
-msgstr "Personalizado"
+msgstr "Özel"
 
 #: ../fields/phone/config.php:22
 msgid "Use the digit 9 to indicate a number"
-msgstr "Usa el dígito 9 para indicar números"
+msgstr "Numara olduğunu belirtmek için 9 rakamını kullanınız"
 
 #: ../fields/range_slider/config.php:17
 msgid "Track"
-msgstr "Rastro"
+msgstr "Takip"
 
 #: ../fields/range_slider/config.php:23 ../fields/select2/field/config.php:20
 msgid "Highlight"
-msgstr "Resaltado"
+msgstr "Vurgula"
 
 #: ../fields/range_slider/config.php:29
 msgid "Handle"
-msgstr "Manejo"
+msgstr "Yönet"
 
 #: ../fields/range_slider/config.php:35 ../fields/select2/field/config.php:29
 msgid "Border"
-msgstr "Borde"
+msgstr "Kenar Çizgisi"
 
 #: ../fields/range_slider/config.php:42
 msgid "Steps"
-msgstr "Saltos"
+msgstr "Adımlar"
 
 #: ../fields/range_slider/config.php:48
 msgid "Minimum"
-msgstr "Mínimo"
+msgstr "En az"
 
 #: ../fields/range_slider/config.php:54
 msgid "Maximum"
-msgstr "Máximo"
+msgstr "En çok"
 
 #: ../fields/range_slider/config.php:60
 msgid "Show Value"
-msgstr "Mostrar valor"
+msgstr "Değer Göster"
 
 #: ../fields/range_slider/config.php:66
 msgid "Prefix"
-msgstr "Prefijo"
+msgstr "Öneki"
 
 #: ../fields/range_slider/config.php:72
 msgid "Suffix"
-msgstr "Sufijo"
+msgstr "Soneki"
 
 #: ../fields/recaptcha/config.php:1
 msgid "reCaptcha required keys from Google."
-msgstr "reCaptcha requiera claves de Google."
+msgstr "reCaptcha'nın Google'dan anahtara ihtiyacı var."
 
 #: ../fields/recaptcha/config.php:3
 msgid "Site Key"
-msgstr "Clave del sitio"
+msgstr "Site Anahtarı"
 
 #: ../fields/recaptcha/config.php:9
 msgid "Secret Key"
-msgstr "Clave secreta"
+msgstr "Gizli Anahtar"
 
 #: ../fields/recaptcha/config.php:15
 msgid "Theme"
@@ -778,230 +770,227 @@ msgstr "Tema"
 
 #: ../fields/recaptcha/config.php:18
 msgid "Light"
-msgstr "Claro"
+msgstr "Açık renkli"
 
 #: ../fields/recaptcha/config.php:19
 msgid "Dark"
-msgstr "Oscuro"
+msgstr "Koyu renkli"
 
 #: ../fields/recaptcha/config.php:21
 msgid ""
 "Theme changes not available in preview. Update form and reload to see new "
 "theme."
 msgstr ""
-"Los cambios del tema no están disponibles en la previsualización. Actualiza "
-"el formulario y recarga para ver el nuevo tema."
+"Temada yapılan değişiklikler önizlemede gösterilmez. Formu kaydedip, sayfayı "
+"yenileyerek değişiklikleri görebilirsiniz."
 
 #: ../fields/recaptcha/preview.php:20
 msgid "No Secret Key Added"
-msgstr "No se ha añadido la clave secreta"
+msgstr "Gizli Anahtar Eklenmedi"
 
 #: ../fields/recaptcha/preview.php:23
 msgid "No Site Key Added"
-msgstr "No se ha añadido clave del sistio"
+msgstr "Site Anahtarı Eklenmedi"
 
 #: ../fields/select2/field/config.php:11
 msgid "Multiple"
-msgstr ""
+msgstr "Çoklu"
 
 #: ../fields/select2/field/config.php:15
 msgid "Enable multiple selections"
-msgstr ""
+msgstr "Çoklu seçimlere izin ver"
 
 #: ../fields/star-rate/config.php:2
 msgid "Number of Stars"
-msgstr "Número de estrellas"
+msgstr "Yıldız sayısı"
 
 #: ../fields/star-rate/config.php:8
 msgid "Star Type"
-msgstr "Tipo de estrella"
+msgstr "Yıldız Tipi"
 
 #: ../fields/star-rate/config.php:11
 msgid "Star"
-msgstr "Estrella"
+msgstr "Yıldız"
 
 #: ../fields/star-rate/config.php:12
 msgid "Heart"
-msgstr "Corazón"
+msgstr "Kalp"
 
 #: ../fields/star-rate/config.php:13
 msgid "Face"
-msgstr "Cara"
+msgstr "Yüz"
 
 #: ../fields/star-rate/config.php:14
 msgid "Dot"
-msgstr "Punto"
+msgstr "Nokta"
 
 #: ../fields/star-rate/config.php:19
 msgid "Star Size"
-msgstr "Tamaño de estrella"
+msgstr "Yıldız Boyutu"
 
 #: ../fields/star-rate/config.php:25
 msgid "Star Spacing"
-msgstr "Espacio entre estrellas"
+msgstr "Yıldız Aralığı"
 
 #: ../fields/star-rate/config.php:31
 msgid "Single Select"
-msgstr "Selección única"
+msgstr "Tek Seç"
 
 #: ../fields/star-rate/config.php:38
 msgid "Star Color"
-msgstr "Color de estrellas"
+msgstr "Yıldız Rengi"
 
 #: ../fields/star-rate/config.php:44
 msgid "Track Color"
-msgstr "Color de rastro"
+msgstr "Parça Rengi"
 
 #: ../fields/star-rate/config.php:50
 msgid "Include Cancel"
-msgstr "Incluir Cancelar"
+msgstr "İptal İçer"
 
 #: ../fields/text/config.php:15
 msgid "Masked Input"
-msgstr "Entrada con máscara"
+msgstr "Maskeli Girdi"
 
 #: ../fields/text/config.php:17
 msgid "Enable input mask"
-msgstr "Activar máscara de entrada"
+msgstr "Girdi maskesi etkinleştir"
 
 #: ../fields/text/config.php:22
 msgid "Mask"
-msgstr "Máscara"
+msgstr "Maske"
 
 #: ../fields/text/config.php:30
 msgid "numeric"
-msgstr "numérica"
+msgstr "sayısal"
 
 #: ../fields/text/config.php:31
 msgid "alphabetical"
-msgstr "alfabética"
+msgstr "alfabetik"
 
 #: ../fields/text/config.php:32
 msgid "alphanumeric"
-msgstr "alfanumérica"
+msgstr "alfanümerik"
 
 #: ../fields/text/config.php:33
 msgid "optional"
-msgstr "opcional"
+msgstr "isteğe bağlı"
 
 #: ../fields/text/config.php:34
 msgid "length"
-msgstr "largo"
+msgstr "uzunluk"
 
 #: ../fields/text/config.php:36
 msgid "Any length character only"
-msgstr "Solo caracteres, cualquier largo"
+msgstr "Herhangi bir uzunlukta ve sadece karakterler"
 
 #: ../fields/text/config.php:37
 msgid "Any length number only"
-msgstr "Solo números, cualquier largo"
+msgstr "Herhangi bir uzunlukta ve sadece sayılar"
 
 #: ../fields/text/config.php:38
 msgid "email"
-msgstr "email"
+msgstr "e-posta"
 
 #: ../fields/toggle_switch/config_template.php:2
 msgid "Orientation"
-msgstr "Orientación"
+msgstr "Oryantasyon"
 
 #: ../fields/toggle_switch/config_template.php:5
 msgid "Horizontal"
-msgstr "Horizontal"
+msgstr "Yatay"
 
 #: ../fields/toggle_switch/config_template.php:6
 msgid "Justified"
-msgstr "Justificado"
+msgstr "Ayarlanmış"
 
 #: ../fields/toggle_switch/config_template.php:7
 msgid "Vertical"
-msgstr "Vertical"
+msgstr "Dikey"
 
 #: ../fields/toggle_switch/config_template.php:13
 msgid "Active Class"
-msgstr "Clase Activa"
+msgstr "Aktif Sınıf"
 
 #: ../fields/toggle_switch/config_template.php:20
 msgid "Inactive Class"
-msgstr "Clase Inactiva"
+msgstr "İnaktif Sınıf"
 
 #: ../fields/toggle_switch/field.php:39 ../ui/edit.php:530 ../ui/edit.php:538
 #: ../ui/edit.php:571 ../ui/edit.php:578
 msgid "Enable"
-msgstr "Activar"
+msgstr "Etkinleştir"
 
 #: ../includes/cf-ajax/plugin.php:38
 msgid "Ajax Submissions"
-msgstr "Envío con Ajax"
+msgstr "Ajax Gönderileri"
 
 #: ../includes/cf-ajax/plugin.php:40
 msgid "Enable Ajax Submissions. (No page reloads)"
-msgstr "Activar envío a través de Ajax. (Sin cargar la página)"
+msgstr "Ajax Gönderilerini Etkinleştirin. (sayfa yenileme yok)"
 
 #: ../includes/cf-ajax/plugin.php:46
 msgid "Custom Callback"
-msgstr "Respuesta personalizada"
+msgstr "Özel Geri Arama"
 
 #: ../includes/cf-ajax/plugin.php:48
 msgid "Add a custom Javascript callback handlers on submission."
-msgstr ""
-"Añade controladores de respuesta de JavaScript personalizados al enviar el "
-"formulario."
+msgstr "Sunulmasına ilişkin özel bir Javascript geri arama işleyicisi ekleyin."
 
 #: ../includes/cf-ajax/plugin.php:55
 msgid "Inhibit Notices"
-msgstr "Inhibir Avisos"
+msgstr "Bildirimleri Engelle"
 
 #: ../includes/cf-ajax/plugin.php:57
 msgid "Don't show default alerts (success etc.)"
-msgstr "No mostrar avisos predeterminados (envío OK, etc.)"
+msgstr "Varsayılan uyarıları gösterme (başarıyla tamamlandı vb.)"
 
 #: ../includes/cf-ajax/plugin.php:63
 msgid "Callback Function"
-msgstr "Función de respuesta"
+msgstr "Geri çağırma fonksiyonu"
 
 #: ../includes/cf-ajax/plugin.php:66
 msgid ""
 "Javascript function to call on submission. Passed an object containing form "
 "submission result."
 msgstr ""
-"Función JavaScript que será llamada al enviar el formulario. Pasa un objeto "
-"que contiene los resultados del envío del formulario."
+"Javascript işlevi teslim çağırmak için. Form gönderme sonucunu içeren bir "
+"nesne geçti."
 
 #: ../includes/cf-ajax/plugin.php:91
 msgid "Multiple Ajax Submissions"
-msgstr "Múltiples envíos con Ajax"
+msgstr "Çoklu Ajax Gönderileri"
 
 #: ../includes/cf-ajax/plugin.php:93
 msgid "If set, form can be submitted multiple times with out a new page load."
 msgstr ""
-"Si está activo, el formulario puede ser enviado varias veces sin cargar la "
-"página."
+"Ayarlarsanız, form yenilenmeye gerek duyamdan birden çok kez gönderilebilir."
 
 #: ../includes/cf-ajax/plugin.php:147 ../includes/cf-ajax/plugin.php:158
 #: ../processors/redirect/config.php:10
 msgid "Redirecting"
-msgstr "Redirección"
+msgstr "Yönlendiriliyor"
 
 #: ../includes/custom_field_class.php:21
 msgid "Custom Class"
-msgstr "Clase personalizada"
+msgstr "Özel Sınıf"
 
 #: ../includes/field_processors.php:45
 msgid "File type not allowed. Allowed types are: "
-msgstr "Tipo de archivo no permitido. Los archivos permitidos son:"
+msgstr "Dosya türüne izin verilmiyor. İzin verilen türler şunlardır:"
 
 #: ../includes/field_processors.php:47
 msgid "File type needs to be"
-msgstr "El tipo de archivo ha de ser"
+msgstr "Dosya türünün şöyle olması gerekir"
 
 #: ../processors/akismet/config.php:2 ../ui/edit.php:372
 #: ../ui/panels/conditions.php:54 ../ui/panels/variables.php:10
 msgid "Name"
-msgstr "Nombre"
+msgstr "Ad"
 
 #: ../processors/akismet/config.php:8
 msgid "Email"
-msgstr "Email"
+msgstr "E-posta"
 
 #: ../processors/akismet/config.php:14 ../processors/redirect/config.php:2
 msgid "URL"
@@ -1009,36 +998,35 @@ msgstr "URL"
 
 #: ../processors/akismet/config.php:27
 msgid "Error Message"
-msgstr "Mensaje de error"
+msgstr "Hata Mesajı"
 
 #: ../processors/akismet/config.php:29
 msgid "Sorry, that looked very spammy, try rephrasing things"
-msgstr ""
-"Lo sentimos, parece que contiene spam, intenta reemplazar algunos textos"
+msgstr "Üzgünüm, bu çok spam gibi duruyor, yeniden ifadelendirmeyi deneyin"
 
 #: ../processors/auto_responder/config.php:2 ../ui/panels/emailer.php:42
 msgid "From Name"
-msgstr "Remitente"
+msgstr "Kimden (İsim)"
 
 #: ../processors/auto_responder/config.php:8 ../ui/panels/emailer.php:49
 msgid "From Email"
-msgstr "Email del remitente"
+msgstr "Kimden (E-posta)"
 
 #: ../processors/auto_responder/config.php:14 ../ui/panels/emailer.php:97
 msgid "Email Subject"
-msgstr "Asunto del email"
+msgstr "E-posta Konusu"
 
 #: ../processors/auto_responder/config.php:20
 msgid "Recipient Name"
-msgstr "Destinatario"
+msgstr "Alıcı Adı"
 
 #: ../processors/auto_responder/config.php:26
 msgid "Recipient Email"
-msgstr "Email destinatario"
+msgstr "Alıcı E-Posta"
 
 #: ../processors/auto_responder/config.php:32
 msgid "Message"
-msgstr "Mensaje"
+msgstr "Mesaj"
 
 #: ../processors/classes/get_data.php:76
 #, php-format
@@ -1047,132 +1035,128 @@ msgstr ""
 
 #: ../processors/increment/config.php:2
 msgid "Increment Start"
-msgstr "Incremento de inicio"
+msgstr "Artım Başlangıcı"
 
 #: ../processors/increment/config.php:6
 msgid "Number to start incrementing."
-msgstr "Número para comenzar el incremento"
+msgstr "Artırmaya başlatma sayısı."
 
 #: ../processors/increment/config.php:8
 msgid ""
 "Incremenets started at {{start}}. to reset, delete this and insert a new "
 "increment processor."
 msgstr ""
-"Los incrementos comienzan en {{start}}. para reiniciarlos, borra esto e "
-"inserta un nuevo procesador incremental."
+"Artım {{start}} sıfırlamaya başladı. Bunu silerek yeni bir artım işlemcisi "
+"ekleyin."
 
 #: ../processors/increment/config.php:14
 msgid "Increment Field"
-msgstr "Campo incremental"
+msgstr "Artım Alan"
 
 #: ../processors/increment/config.php:17
 msgid ""
 "If you want to show the value in the entries, Select a Hidden field in form "
 "to capture the value to."
 msgstr ""
-"Si quieres mostrar el valor en las entradas, selecciona un Campo Oculto en "
-"el formulario para capturar el valor también."
+"Eğer girdilerinde değerini göstermek istiyorsanız, değeri yakalamak için "
+"formda bir gizli alan seçin."
 
 #: ../processors/redirect/config.php:8
 msgid "Redirect Message"
-msgstr "Mensaje de redirección"
+msgstr "Mesaj yönlendir"
 
 #: ../processors/redirect/config.php:11
 msgid "Message text shown when redirecting in Ajax mode."
-msgstr "Mensaje de texto mostrado cuando se redirige en modo Ajax."
+msgstr "Ajax modunda yönlendirme yapılırken gösterilen mesaj metni."
 
 #: ../ui/admin.php:26
 msgid "Create Form"
-msgstr "Crear Formulario"
+msgstr "Form Oluştur"
 
 #: ../ui/admin.php:38
 msgid "Create New Form"
-msgstr "Crear Nuevo Formulario"
+msgstr "Yeni Form Oluştur"
 
 #: ../ui/admin.php:38
 msgid "New Form"
-msgstr "Nuevo Formulario"
+msgstr "Yeni Form"
 
 #: ../ui/admin.php:41 ../ui/admin_templates.php:33
 msgid "Import Form"
-msgstr "Importar Formulario"
+msgstr "İçe Form Aktar"
 
 #: ../ui/admin.php:41
 msgid "Import"
-msgstr "Importar"
+msgstr "İçe Aktar"
 
 #: ../ui/admin.php:47
 msgid "Front-end Style Includes"
-msgstr "Estilos incluidos en Frontend"
+msgstr "Önuçlu Stil İçerir"
 
 #: ../ui/admin.php:51
 msgid "Includes Bootstrap 3 styles on the frontend for form alert notices"
-msgstr ""
-"Incluye estilos Bootstrap 3 en la zona pública para los mensajes de aviso"
+msgstr "Önuçta form uyarı bildirimleri için Bootstrap 3 stilleri içerir."
 
 #: ../ui/admin.php:51
 msgid "Alert"
-msgstr "Avisos"
+msgstr "Uyarı"
 
 #: ../ui/admin.php:52
 msgid "Includes Bootstrap 3 styles on the frontend for form fields and buttons"
-msgstr ""
-"Incluye estilos Bootstrap 3 en la zona pública para los campos y los botones "
-"del formulario"
+msgstr "Önuçta form alanları ve butonları için Bootstrap 3 stilleri içerir."
 
 #: ../ui/admin.php:53
 msgid "Includes Bootstrap 3 styles on the frontend for form grid layouts"
-msgstr ""
-"Incluye estilos Bootstrap 3 en la zona pública para los módulos del diseño"
+msgstr "Önuçta form düzenleri için Bootstrap 3 stilleri içerir."
 
 #: ../ui/admin.php:53
 msgid "Grid"
-msgstr "Bloques"
+msgstr "Izgara"
 
 #: ../ui/admin.php:85 ../ui/admin.php:140
 msgid "Entries"
-msgstr "Entradas"
+msgstr "Girişler"
 
 #: ../ui/admin.php:102 ../ui/edit.php:531 ../ui/edit.php:539
 #: ../ui/panels/emailer.php:35
 msgid "Disabled"
-msgstr "Desactivado"
+msgstr "Devre Dışı"
 
 #: ../ui/admin.php:112
 msgid "Mailer Debug enabled."
-msgstr "Depuración de correo activada."
+msgstr "Mailer Debug etkinleştirildi."
 
 #: ../ui/admin.php:116 ../ui/entries.php:14
 msgid "Edit"
-msgstr "Editar"
+msgstr "Düzenle"
 
 #: ../ui/admin.php:141
 msgid "Export"
-msgstr "Exportar"
+msgstr "Dışa aktar"
 
 #: ../ui/admin.php:142
 msgid "Clone Form"
-msgstr "Clonar Formulario"
+msgstr "Formu Klonla"
 
 #: ../ui/admin.php:142
 msgid "Clone"
-msgstr "Clonar"
+msgstr "Klon"
 
 #: ../ui/admin.php:143
 msgid "This will delete this form permanently. Continue?"
-msgstr "Esta acción eliminará el formulario definitivamente. ¿Continuar?"
+msgstr "Bu yaptığınız formu kalıcı olarak silecektir. Devam?"
 
 #: ../ui/admin.php:143
 msgid "Delete"
-msgstr "Eliminar"
+msgstr "Sil"
 
 #: ../ui/admin.php:163
 msgid "You don't have any forms."
-msgstr "No hay ningún formulario."
+msgstr "Henüz herhangi bir form oluşturmadınız."
 
 #: ../ui/admin.php:204
 msgid "An form name is required"
-msgstr "Es necesario un nombre para el formulario"
+msgstr "Form adı gereklidir"
 
 #: ../ui/admin.php:231
 msgid ""
@@ -1180,37 +1164,37 @@ msgid ""
 "to the <a href=\"http://wordpress.org/support/plugin/caldera-forms\" target="
 "\"_blank\">support forum</a>."
 msgstr ""
-"Parece que algo no funciona bien. Por favor inténtalo un poco más tarde o "
-"pídenos ayuda en nuestra <a href=\"http://wordpress.org/support/plugin/"
-"caldera-forms\" target=\"_blank\">zona de ayuda y soporte</a>."
+"Bir şey çalışmıyor gibi görünüyor. Bir süre sonra tekrar deneyin ya da "
+"lütfen <a href=\"http://wordpress.org/support/plugin/caldera-forms\" target="
+"\"_blank\">destek foruma</a> mesajınızı gönderin. "
 
 #: ../ui/admin_templates.php:2 ../ui/admin_templates.php:7
 msgid "Bulk Actions"
-msgstr "Acciones en lote"
+msgstr "Toplu İşlemler"
 
 #: ../ui/admin_templates.php:3 ../ui/admin_templates.php:8
 msgid "Export Selected"
-msgstr "Exportar seleccionado"
+msgstr "Seçilenleri Dışa Aktar"
 
 #: ../ui/admin_templates.php:4
 msgid "Move to Trash"
-msgstr "Mover a papelera"
+msgstr "Çöpe Taşı"
 
 #: ../ui/admin_templates.php:10
 msgid "Delete Permanently"
-msgstr "Borrar permanentemente"
+msgstr "Kalıcı Olarak Sil"
 
 #: ../ui/admin_templates.php:19 ../ui/admin_templates.php:48 ../ui/edit.php:507
 msgid "Form Name"
-msgstr "Nombre de Formulario"
+msgstr "Form Adı"
 
 #: ../ui/admin_templates.php:25
 msgid "Form File"
-msgstr "Fichero de Formulario"
+msgstr "Form Dosyası"
 
 #: ../ui/admin_templates.php:54 ../ui/edit.php:410
 msgid "Description"
-msgstr "Descripción"
+msgstr "Açıklama"
 
 #: ../ui/admin_templates.php:72 ../ui/edit.php:364
 msgid "ID"
@@ -1218,83 +1202,83 @@ msgstr "ID"
 
 #: ../ui/admin_templates.php:73 ../ui/admin_templates.php:111
 msgid "Submitted"
-msgstr "Enviado"
+msgstr "Gönderildi"
 
 #: ../ui/admin_templates.php:94
 msgid "No entries found"
-msgstr "No se encontraron entradas."
+msgstr "Kayıt bulunamadı"
 
 #: ../ui/admin_templates.php:100
 msgid "No entries yet."
-msgstr "No hay entradas aún."
+msgstr "Henüz hiç kayıt yok."
 
 #: ../ui/edit.php:13
 msgid "Form has successfully been submitted. Thank you."
-msgstr "El formulario ha sido correctamente enviado. Gracias."
+msgstr "Form başarıyla gönderildi. Teşekkürler."
 
 #: ../ui/edit.php:99
 msgid "Auto Populate"
-msgstr "Auto-rellenar."
+msgstr "Otomatik Doldur"
 
 #: ../ui/edit.php:105
 msgid "Auto Type"
-msgstr "Auto-introducir."
+msgstr "Otomatik Yaz"
 
 #: ../ui/edit.php:108
 msgid "Select a source"
-msgstr "Selecciona una fuente"
+msgstr "Kaynak seç"
 
 #: ../ui/edit.php:109 ../ui/edit.php:135
 msgid "Post Type"
-msgstr "Tipo de Post"
+msgstr "Yazı Türü"
 
 #: ../ui/edit.php:110 ../ui/edit.php:119
 msgid "Taxonomy"
-msgstr "Clasificación"
+msgstr "Taksonomi"
 
 #: ../ui/edit.php:167
 msgid "Add Option"
-msgstr "Añadir Opción"
+msgstr "Seçenek Ekle"
 
 #: ../ui/edit.php:168
 msgid "Bulk Insert"
-msgstr "Insetar en lote"
+msgstr "Toplu Ekle"
 
 #: ../ui/edit.php:171
 msgid "Single option per line. These replace the current list."
-msgstr "Una sola opción por línea. Esto reemplazará la lista actual."
+msgstr "Satır başına tek seçenek. Geçerli siteyi değiştir."
 
 #: ../ui/edit.php:172
 msgid "Insert Options"
-msgstr "Opciónes de inserción"
+msgstr "Seçenek Ekle"
 
 #: ../ui/edit.php:176
 msgid "No Default"
-msgstr "No (Predeterminado)"
+msgstr "Varsayılan Yok"
 
 #: ../ui/edit.php:177
 msgid "Show Values"
-msgstr "Mostrar valores"
+msgstr "Değerleri Göster"
 
 #: ../ui/edit.php:181
 msgid "Label"
-msgstr "Etiqueta"
+msgstr "Etiket"
 
 #: ../ui/edit.php:342
 msgid "Elements"
-msgstr "Elementos"
+msgstr "Öğeler"
 
 #: ../ui/edit.php:354
 msgid "Element Type"
-msgstr "Tipo de elemento"
+msgstr "Öğe Türü"
 
 #: ../ui/edit.php:379
 msgid "Hide Label"
-msgstr "Ocultar etiqueta"
+msgstr "Etiketi gizle"
 
 #: ../ui/edit.php:386
 msgid "Slug"
-msgstr "Slug"
+msgstr "Kısa isim"
 
 #: ../ui/edit.php:392
 msgid "Condition"
@@ -1302,179 +1286,181 @@ msgstr ""
 
 #: ../ui/edit.php:397
 msgid "Disable"
-msgstr "Desactivar"
+msgstr "Devre Dışı Bırak"
 
 #: ../ui/edit.php:403
 msgid "Required"
-msgstr "Requerido"
+msgstr "Gerekli"
 
 #: ../ui/edit.php:417
 msgid "Show in Entry List"
-msgstr "Mostrar en listado de entradas"
+msgstr "Kayıt Listesinde Göster"
 
 #: ../ui/edit.php:427
 msgid ""
 "Are you sure you want to remove this field?. 'Cancel' to stop. 'OK' to delete"
 msgstr ""
-"¿Estás seguro de querer eliminar este campo? Pulsa 'Cancelar' si no. 'OK' "
-"para eliminar"
+"Bu alanı karldırmak istediğinize emin misiniz? 'İptal'e tıklayarak durdurum "
+"veya 'Tamam'a basarak siliin"
 
 #: ../ui/edit.php:427
 msgid "Delete Element"
-msgstr "Eliminar elemento"
+msgstr "Öğeyi Sil"
 
 #: ../ui/edit.php:493 ../ui/edit.php:505
 msgid "General Settings"
-msgstr "Configuración General"
+msgstr "Genel Ayarlar"
 
 #: ../ui/edit.php:498
 msgid "Updated Successfully"
-msgstr "Actualizado Correctamente"
+msgstr "Başarıyla Güncellendi"
 
 #: ../ui/edit.php:500
 msgid "Update Form"
-msgstr "Actualizar Formulario"
+msgstr "Formu Güncelle"
 
 #: ../ui/edit.php:501
 msgid "Preview Form"
-msgstr "Previsualizar"
+msgstr "Formu Görüntüle"
 
 #: ../ui/edit.php:514
 msgid "Form Description"
-msgstr "Descripción del formulario"
+msgstr "Form Açıklaması"
 
 #: ../ui/edit.php:521
 msgid "State"
-msgstr "Estado"
+msgstr "Durum"
 
 #: ../ui/edit.php:523
 msgid "Deactivate / Draft"
-msgstr "Desactivar / Borrador"
+msgstr "Devredışı Bırak / Taslak"
 
 #: ../ui/edit.php:528
 msgid "Capture Entries"
-msgstr "Capturar Entradas"
+msgstr "Kayıtları Yakala"
 
 #: ../ui/edit.php:536
 msgid "Pin to Menu"
-msgstr "Agregar al Menú"
+msgstr "Menüye Ekle"
 
 #: ../ui/edit.php:545
 msgid "View Entries"
-msgstr "Ver Entradas"
+msgstr "Kayıtları Görüntüle"
 
 #: ../ui/edit.php:547
 msgid "All"
-msgstr "Todo"
+msgstr "Hepsi"
 
 #: ../ui/edit.php:569
 msgid "Hide Form"
-msgstr "Ocultar Formulario"
+msgstr "Formu Gizle"
 
 #: ../ui/edit.php:571
 msgid "Hide form after successful submission"
-msgstr "Ocultar formulario tras envío con éxito"
+msgstr "Başarılı girişlerden sonra formu gizle"
 
 #: ../ui/edit.php:576
 msgid "Honeypot"
-msgstr "Bote de Miel"
+msgstr "Bal küpü"
 
 #: ../ui/edit.php:578
 msgid "Place an invisible field to trick spambots"
-msgstr "Coloca un campo invisible para engañar a los programas de Spam"
+msgstr "Spam botlarını kandırmak için görünmez bir alan ekleyin"
 
 #: ../ui/edit.php:583
 msgid "Success Message"
-msgstr "Mensaje de Envío con éxito"
+msgstr "Başarılı Mesajı"
 
 #: ../ui/edit.php:589
 msgid "Gravatar Field"
-msgstr "Campo Gavatar"
+msgstr "Gravatar Alanı"
 
 #: ../ui/edit.php:596
 msgid "Used when viewing an entry from a non-logged in user."
-msgstr "Usado al ver una entrada de un usuario no autenticado."
+msgstr ""
+"Giriş yapmamış bir kullanıcı tarafından girilmiş bir kayıt görüntülenirken "
+"kullanılıır"
 
 #: ../ui/edit.php:670
 msgid "Add New"
-msgstr "Añadir Nuevo"
+msgstr "Yeni Ekle"
 
 #: ../ui/edit.php:735 ../ui/edit.php:769
 msgid "Remove"
-msgstr "Borrar"
+msgstr "Kaldır"
 
 #: ../ui/edit.php:825
 msgid "Set Element"
-msgstr "Añadir Elemento"
+msgstr "Öğeyi Belirle"
 
 #: ../ui/edit.php:828
 msgid "No description given"
-msgstr "No tiene descripción"
+msgstr "Verilmiş açıklama yok"
 
 #: ../ui/edit.php:890 ../ui/panels/conditions.php:75
 msgid "or"
-msgstr "o"
+msgstr "veya"
 
 #: ../ui/edit.php:899 ../ui/edit.php:922 ../ui/panels/conditions.php:102
 msgid "is"
-msgstr "es"
+msgstr "eşittir"
 
 #: ../ui/edit.php:900 ../ui/edit.php:923 ../ui/panels/conditions.php:103
 msgid "is not"
-msgstr "no es"
+msgstr "eşit değildir"
 
 #: ../ui/edit.php:901 ../ui/edit.php:924 ../ui/panels/conditions.php:104
 msgid "is greater than"
-msgstr "es mayor que"
+msgstr "büyüktür"
 
 #: ../ui/edit.php:902 ../ui/edit.php:925 ../ui/panels/conditions.php:105
 msgid "is less than"
-msgstr "es menor que"
+msgstr "küçüktür"
 
 #: ../ui/edit.php:903 ../ui/edit.php:926 ../ui/panels/conditions.php:106
 msgid "starts with"
-msgstr "empieza por"
+msgstr "başlar"
 
 #: ../ui/edit.php:904 ../ui/edit.php:927 ../ui/panels/conditions.php:107
 msgid "ends with"
-msgstr "termina en"
+msgstr "biter"
 
 #: ../ui/edit.php:905 ../ui/edit.php:928 ../ui/panels/conditions.php:108
 msgid "contains"
-msgstr "contiene"
+msgstr "içerir"
 
 #: ../ui/edit.php:907 ../ui/edit.php:930
 msgid "Select field first"
-msgstr "Selecciona el campo primero"
+msgstr "Önce alan seçin"
 
 #: ../ui/edit.php:912 ../ui/panels/conditions.php:5
 #: ../ui/panels/conditions.php:129
 msgid "Add Condition"
-msgstr "Añadir Condición"
+msgstr "Koşul Ekle"
 
 #: ../ui/edit.php:918 ../ui/panels/conditions.php:85
 msgid "and"
-msgstr "y"
+msgstr "ve"
 
 #: ../ui/entries_toolbar.php:15
 msgid "Active"
-msgstr "Activo"
+msgstr "Aktif"
 
 #: ../ui/entries_toolbar.php:31
 msgid "Export Entries"
-msgstr "Exportar Entradas"
+msgstr "Kayıtları Dışa Aktar"
 
 #: ../ui/entries_toolbar.php:35
 msgid "Apply"
-msgstr "Aplicar"
+msgstr "Uygula"
 
 #: ../ui/entry_navigation.php:23
 msgid "item"
-msgstr "elemento"
+msgstr "öğe"
 
 #: ../ui/entry_navigation.php:23
 msgid "items"
-msgstr "elementos"
+msgstr "öğeler"
 
 #: ../ui/extend.php:23
 msgid ""
@@ -1482,42 +1468,45 @@ msgid ""
 "License Manager. This panel will be removed in a future version of Caldera "
 "Forms."
 msgstr ""
+"Not: Şu anda Caldera Formları lisanslarını CalderaWP Lisans Yöneticisine "
+"taşıyoruz. Bu panel Caldera Formlarının gelecekteki versiyonlarında "
+"kaldırılacaktır."
 
 #: ../ui/extend.php:29
 msgid "No licensed addons installed."
-msgstr "No hay extensiones Premium instaladas."
+msgstr "Hiçbir lisans eklentisi yüklenmedi."
 
 #: ../ui/extend.php:54
 msgid "Already Installed"
-msgstr "Ya está instalado"
+msgstr "Zaten Yüklü"
 
 #: ../ui/insert_shortcode.php:5
 msgid "Insert Caldera Form"
-msgstr "Insertar Caldera Form"
+msgstr "Caldera Formu Ekle"
 
 #: ../ui/insert_shortcode.php:24
 msgid "You don't have any forms to insert."
-msgstr "No tienes ningún formulario que insertar."
+msgstr "Ekleyebileceğiniz hiç form yok."
 
 #: ../ui/insert_shortcode.php:32
 msgid "Insert Form"
-msgstr "Insertar Formulario"
+msgstr "Form Ekle"
 
 #: ../ui/insert_shortcode.php:34
 msgid "Close"
-msgstr "Cerrar"
+msgstr "Kapat"
 
 #: ../ui/news_templates.php:21
 msgid "Unable to connect or no extensions available."
-msgstr "Incapaz de conectar o no hay extensiones disponibles."
+msgstr "Bağlanamıyor veya mevcut eklenti yok."
 
 #: ../ui/panels/conditions.php:65
 msgid "Show"
-msgstr "Mostrar"
+msgstr "Göster"
 
 #: ../ui/panels/conditions.php:66
 msgid "Hide"
-msgstr "Ocultar"
+msgstr "Gizle"
 
 #: ../ui/panels/conditions.php:69
 msgid "Add Conditional Line"
@@ -1545,11 +1534,11 @@ msgstr ""
 
 #: ../ui/panels/emailer.php:36
 msgid "Enabled"
-msgstr "Activado"
+msgstr "Etkin"
 
 #: ../ui/panels/emailer.php:45
 msgid "Name from which the email comes"
-msgstr "Nombre de quien envía el email"
+msgstr "Gelen e-postadaki isim"
 
 #: ../ui/panels/emailer.php:52
 msgid ""
@@ -1557,37 +1546,37 @@ msgid ""
 "form. Rather use your own email and use a form field in the \"Reply To Email"
 "\" below."
 msgstr ""
-"Dirección email de quien envía el correo. Intenta no usar un campo del "
-"formulario. En lugar de ello usa tu propio email y usa un campo de "
-"formulario en la casilla \"Responder al Email\" de abajo."
+"Gelen e-postadaki, e-posta adresi. Formdan bir alan kullanmamaya çalış. "
+"Aksine kendi e-posta adresini kullan ve aşağıdaki \"Reply To Email\" form "
+"alanlarını kullan."
 
 #: ../ui/panels/emailer.php:56
 msgid "Reply To Email"
-msgstr "Responder al Email"
+msgstr "E-postayı Cevapla"
 
 #: ../ui/panels/emailer.php:59
 msgid ""
 "The email address of the person filling in the form. This will allow the "
 "email to be replied directly to the sender."
 msgstr ""
-"La dirección email de la persona rellenado en el formulario. Esto permitirá "
-"al email ser respondido directamente al remitente."
+"Formu dolduran kişinin e-posta adresi. Bu e-postanın gönderene doğrudan "
+"cevaplandırılmasını sağlayacaktır."
 
 #: ../ui/panels/emailer.php:64
 msgid "Email Type"
-msgstr "Tipo de Email"
+msgstr "E-posta Tipi"
 
 #: ../ui/panels/emailer.php:73
 msgid "CSV Include"
-msgstr "Incluir CSV"
+msgstr "CSV dahil"
 
 #: ../ui/panels/emailer.php:75
 msgid "Attach a CSV version of the submission"
-msgstr "Adjuntar una versión CSV de los datos enviados"
+msgstr "Gönderinin CSV sürümünü ekleyin"
 
 #: ../ui/panels/emailer.php:81
 msgid "Recipients"
-msgstr "Destinatarios"
+msgstr "Alıcılar"
 
 #: ../ui/panels/emailer.php:84
 msgid "Comma separated list of email addresses to send the message to."
@@ -1595,7 +1584,7 @@ msgstr ""
 
 #: ../ui/panels/emailer.php:89
 msgid "BCC"
-msgstr "CCO"
+msgstr "BCC"
 
 #: ../ui/panels/emailer.php:92
 msgid "Comma separated list of email addresses to send a BCC to."
@@ -1603,11 +1592,11 @@ msgstr ""
 
 #: ../ui/panels/emailer.php:100
 msgid "Use %field_slug% to use a value from the form"
-msgstr "Usa %slug_del_campo% para referirte a un campo del formulario"
+msgstr "Formdan bir değer kullanmak için %kısaad% olarak yazın."
 
 #: ../ui/panels/emailer.php:104
 msgid "Email Message"
-msgstr "Mensaje del Email"
+msgstr "E-posta Mesajı"
 
 #: ../ui/panels/emailer.php:107
 msgid ""
@@ -1615,18 +1604,17 @@ msgid ""
 "build an automatic mail based on form content. Leaving the mailer blank, "
 "will create and automatic summary."
 msgstr ""
-"Etiquetas mágicas, %slug_del_campo% será reemplazado con la información "
-"introducida en el formulario. Usa {summary} para construir automáticamente "
-"una versión completa de todo el contenido introducido. Si dejas el correo en "
-"blanco, se creará un sumario automáticamente."
+"Sihirli etiketler, %kısaad% gönderilmiş bilgiyle değiştirildi. {summary} "
+"etiketini kullanarak form içeriğine dayalı otomatik bir e-posta oluşturun. "
+"Posta göndericiyi boş bırakmak, otomatik özet oluşturacaktır."
 
 #: ../ui/panels/emailer.php:113
 msgid "Debug Mailer"
-msgstr "Depurar Envío de Correo"
+msgstr "Mail Göndericiyi Hatalardan Ayıkla"
 
 #: ../ui/panels/emailer.php:115
 msgid "Enable email send transation log"
-msgstr "Activar log de envío de email"
+msgstr "E-posta gönderme işlem kaydını etkinleştir"
 
 #: ../ui/panels/emailer.php:116
 msgid ""
@@ -1634,9 +1622,9 @@ msgid ""
 "log. Do not keep this enabled on production as it sends two emails for "
 "tracking."
 msgstr ""
-"Si está activo, las entradas tendrán una pestaña meta llamada \"Depurador de "
-"Correo\" para ver el log de la transacción. No lo mantengas activado en "
-"producción ya que esto envía dos emails de seguimiento."
+"Ayarlanırsa, kayıtlar \"Meular Debug\" etiketini alarak işlem kaydını "
+"görmenizi sağlayacak. Bunu çalışırken etkin bırakmayın çünkü takip için iki "
+"e-posta gönderir."
 
 #: ../ui/panels/emailer.php:118
 msgid "Learn more here"
@@ -1647,119 +1635,119 @@ msgid ""
 "Please add a \"Button\" element and set it to \"Submit\" if you want to have "
 "the form submittable."
 msgstr ""
-"Por favor añade un elemento \"Botón\" y configúralo como \"Enviar\" si "
-"quieres que el formulario se pueda enviar."
+"Eğer gönderilebilir bir form istiyorsanız lütfen bir \"Button\" öğesi "
+"ekleyip, \"Submit\" olarak ayarlayınız."
 
 #: ../ui/panels/layout.php:13
 msgid "This will remove all the fields in this row. Are you sure?"
-msgstr "Esto eliminará todos los campos en esta fila. ¿Estás seguro?"
+msgstr "Bu işlem satırdaki tüm alanları kaldıracaktır. Emin misiniz?"
 
 #: ../ui/panels/layout.php:14 ../ui/panels/layout.php:18
 #: ../ui/panels/layout.php:22 ../ui/panels/layout.php:109
 #: ../ui/panels/layout_toolbar.php:4 ../ui/panels/pages.php:14
 msgid "Page"
-msgstr "Página"
+msgstr "Sayfa"
 
 #: ../ui/panels/layout_toolbar.php:11
 msgid "Add Page"
-msgstr "Añadir Página"
+msgstr "Sayfa ekle"
 
 #: ../ui/panels/layout_toolbar.php:12
 msgid "Drag onto the form grid below"
-msgstr "Arrastrar dentro de los módulos de abajo"
+msgstr "Aşağıdaki form ızgarasının üzerine sürükleyiniz"
 
 #: ../ui/panels/layout_toolbar.php:15
 msgid "Add Element"
-msgstr "Añadir Elemento"
+msgstr "Öğe Ekle"
 
 #: ../ui/panels/pages.php:2
 msgid "Progress Bar"
-msgstr "Barra de progreso"
+msgstr "İlerleme Çubuğu"
 
 #: ../ui/panels/pages.php:4
 msgid "Show Breadcrumbs"
-msgstr "Mostrar Migas de Pan"
+msgstr "Breadcrumbs'ı göster."
 
 #: ../ui/panels/pages.php:5
 msgid "ProTip: Use an HTML element to build a custom progress per page"
 msgstr ""
-"Nota: Usa un elemento HTML para construir un progreso personalizado por cada "
-"página"
+"Profesyoneller için ipucu: Her sayfaya özel ilerleme şeyi koymak için HTML "
+"öğesini kullanın."
 
 #: ../ui/panels/processors.php:22 ../ui/panels/processors.php:47
 #: ../ui/panels/processors.php:100
 msgid "New Form Processor"
-msgstr "Nuevo Procesador de Formulario"
+msgstr "Yeni Form İşlemcisi"
 
 #: ../ui/panels/processors.php:103
 msgid "Processor Type"
-msgstr "Tipo de procesador"
+msgstr "İşlemci Tipi"
 
 #: ../ui/panels/processors.php:117
 msgid "Are you sure you want to remove this processor?"
-msgstr "¿Estás seguro de querer eliminar este procesador?"
+msgstr "Bu işlemci kaldırmak istediğinizden emin misiniz?"
 
 #: ../ui/panels/processors.php:117
 msgid "Remove Processor"
-msgstr "Eliminar Procesador"
+msgstr "İşlemciyi kaldır"
 
 #: ../ui/panels/processors.php:123
 msgid "Use"
-msgstr "Usar"
+msgstr "Kullan"
 
 #: ../ui/panels/processors.php:124
 msgid "Don't Use"
-msgstr "No usar"
+msgstr "Kullanma"
 
 #: ../ui/panels/processors.php:126
 msgid "Add Conditional Group"
-msgstr "Añadir grupo condicional"
+msgstr "Şartlı Grup Ekle"
 
 #: ../ui/panels/processors.php:171
 msgid "Add Processor"
-msgstr "Añadir Procesador"
+msgstr "İşlemci ekle"
 
 #: ../ui/panels/processors.php:221
 msgid "Use Processor"
-msgstr "Usar Procesador"
+msgstr "İşlemciyi Kullan"
 
 #: ../ui/panels/processors.php:226
 msgid "by"
-msgstr "por"
+msgstr "tarafından"
 
 #: ../ui/panels/processors.php:284
 msgid "This processor has no configurable options."
-msgstr "Este procesador no tiene opciones configurables."
+msgstr "Bu işlemcinin yapılandırılabilir seçeneği yok."
 
 #: ../ui/panels/variable_add.php:1
 msgid "Add Variable"
-msgstr "Añadir variable"
+msgstr "Değişken Ekle"
 
 #: ../ui/panels/variables.php:14
 msgid "Behaviour"
-msgstr "Comportamiento"
+msgstr "Davranış"
 
 #: ../ui/panels/variables.php:16
 msgid "No variables defined"
-msgstr "No hay variables definidas"
+msgstr "Hiçbir değişken tanımlanmadı"
 
 #: ../ui/panels/variables.php:29 ../ui/panels/variables.php:49
 msgid "Static"
-msgstr "Estático"
+msgstr "Statik"
 
 #: ../ui/panels/variables.php:30 ../ui/panels/variables.php:50
 msgid "Passback"
-msgstr "Transferencias"
+msgstr "Passback"
 
 #: ../ui/panels/variables.php:31 ../ui/panels/variables.php:51
 msgid "Entry List"
-msgstr "Lista de Entradas"
+msgstr "Kayıt Listesi"
 
 #~ msgid "Settings"
-#~ msgstr "Configuración"
+#~ msgstr "Ayarlar"
 
 #~ msgid "Comma separated list of email addresses."
-#~ msgstr "Lista de direcciones email separadas por coma."
+#~ msgstr "E-posta adreslerinin virgülle ayrıldığı liste."
 
 #~ msgid "Add Row"
-#~ msgstr "Añadir Fila"
+#~ msgstr "Satır Ekle"
