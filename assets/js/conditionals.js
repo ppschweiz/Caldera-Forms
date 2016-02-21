@@ -1,3 +1,4 @@
+var calders_forms_check_conditions, calders_forms_init_conditions;
 (function($){
 
 	// IE8 compatibility
@@ -21,12 +22,12 @@
 		};
 	}
 
-	function calders_forms_check_conditions( inst_id ){
-		
-		if( typeof caldera_conditionals[inst_id] === "undefined"){
+	calders_forms_check_conditions = function( inst_id ){
+
+		if( typeof caldera_conditionals === "undefined" || typeof caldera_conditionals[inst_id] === "undefined"){
 			return;
 		}
-
+		var form = $( '#' + inst_id );
 		for( var field in caldera_conditionals[ inst_id ] ){
 
 			// each conditional
@@ -48,12 +49,18 @@
 				for(var lid in lines){					
 					/// get field 
 
-					var compareelement 	= jQuery('[data-field="' + lines[lid].field + '_' + lines[lid].instance + '"]'),
+					var compareelement 	= form.find('[data-field="' + lines[lid].field + '"]'),
 					comparefield 	= [],
 					comparevalue	= (typeof lines[lid].value === 'function' ? lines[lid].value() : lines[lid].value);
 					
+					if( typeof lines[lid].selectors !== 'undefined' ){
+						for( var selector in lines[lid].selectors ){
+							var re = new RegExp( selector ,"g");
+							comparevalue = comparevalue.replace( re, $( lines[lid].selectors[ selector ] ).val() );
+						}
+					}
+
 					truelines[lid] 	= false;
-					
 					if( compareelement.is(':radio,:checkbox')){
 						compareelement = compareelement.filter(':checked');
 					}else if( compareelement.is('div')){
@@ -65,7 +72,7 @@
 						for( var i = 0; i<compareelement.length; i++){							
 							comparefield.push(compareelement[i].value);
 						}
-					}					
+					}
 					switch(lines[lid].compare) {
 						case 'is':
 						if(comparefield.length){
@@ -83,15 +90,15 @@
 						break;
 						case '>':
 						case 'greater':
-						if( parseFloat( comparefield.reduce(function(a, b) {return a + b;}) ) > parseFloat( comparevalue ) ){
-							truelines[lid] = true;
-						}
+
+							truelines[lid] = parseFloat( comparefield.reduce(function(a, b) {return a + b;}) ) > parseFloat( comparevalue );
+
 						break;
 						case '<':
 						case 'smaller':
-						if( parseFloat( comparefield.reduce(function(a, b) {return a + b;}) ) < parseFloat( comparevalue ) ){
-							truelines[lid] = true;
-						}
+
+							truelines[lid] = parseFloat( comparefield.reduce(function(a, b) {return a + b;}) ) < parseFloat( comparevalue );
+
 						break;
 						case 'startswith':
 						for( var i = 0; i<comparefield.length; i++){
@@ -128,7 +135,6 @@
 
 			}
 
-			
 
 			var template	=	jQuery('#conditional-' + field + '-tmpl').html(),
 			target		=	jQuery('#conditional_' + field),
@@ -166,7 +172,7 @@
 					jQuery(document).trigger('cf.remove');
 				}
 			}else if (action === 'enable'){
-				if(!target.html().length){
+				if(!target.html().length){					
 					target.html(template).trigger('cf.add');
 					jQuery(document).trigger('cf.add').trigger('cf.enable');
 				}else{
@@ -176,6 +182,7 @@
 				if(!target.html().length){
 					target.html(template).trigger('cf.remove');
 					jQuery(document).trigger('cf.remove').trigger('cf.disable');
+					jQuery('[data-field="' + field + '"]').prop('disabled', 'disabled');
 				}else{
 					target_field.prop('disabled', 'disabled');
 				}
@@ -184,8 +191,7 @@
 		}	
 	}
 	
-	if(typeof caldera_conditionals !== 'undefined'){
-		
+	calders_forms_init_conditions = function(){
 		jQuery('.caldera_forms_form').on('change keyup', '[data-field]', function(e){
 			
 			var form 			= $(this).closest('.caldera_forms_form').prop('id');
@@ -196,6 +202,12 @@
 		// init
 		$('.caldera_forms_form').each( function(){
 			calders_forms_check_conditions( $(this).closest('.caldera_forms_form').prop('id') );
-		} );
+		} );		
+	}
+
+	if(typeof caldera_conditionals !== 'undefined'){
+		
+		calders_forms_init_conditions();
+
 	}
 })(jQuery);

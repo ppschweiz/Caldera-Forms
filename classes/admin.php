@@ -76,6 +76,7 @@ class Caldera_Forms_Admin {
 		// add element & fields filters
 		add_filter('caldera_forms_get_panel_extensions', array( $this, 'get_panel_extensions'), 1);
 		add_filter('caldera_forms_entry_viewer_buttons', array( $this, 'set_viewer_buttons'),10, 4);
+		add_filter('caldera_forms_entry_editor_buttons', array( $this, 'set_editor_buttons'),10, 4);
 		
 		// action
 		add_action('caldera_forms_entry_actions', array( $this, 'get_entry_actions'),1);
@@ -87,7 +88,7 @@ class Caldera_Forms_Admin {
 		add_filter( 'wp_fullscreen_buttons', array($this, 'shortcode_insert_button_fs' ), 11 );
 
 
-		if( current_user_can( 'manage_options' ) ){
+		if( current_user_can( Caldera_Forms::get_manage_cap( 'create' ) ) ){
 			// create forms
 			add_action("wp_ajax_create_form", array( $this, 'create_form') );
 		}
@@ -192,7 +193,6 @@ class Caldera_Forms_Admin {
 
 	public function get_form_preview(){
 		global $post;
-
 		add_filter('caldera_forms_render_form_element', array( $this, 'set_preview_form_element') );
 		$post = get_post( (int) $_POST['post_id'] );
 		if( isset($_POST['atts']['named']['id']) ){
@@ -200,9 +200,13 @@ class Caldera_Forms_Admin {
 		}elseif( isset($_POST['atts']['named']['name']) ){
 			$form = $_POST['atts']['named']['name'];
 		}
+		add_filter('caldera_forms_get_form-' . $form, array( $this, 'set_preview_get_form'),100 );
+
 		if( !empty( $form ) ){
 			ob_start();
+			wp_head();
 			echo Caldera_Forms::render_form( $form );
+			wp_print_footer_scripts();
 			$html = ob_get_clean();
 		}
 		$out = array();
@@ -212,7 +216,11 @@ class Caldera_Forms_Admin {
 		
 		wp_send_json_success( $out );
 	}
-
+	public function set_preview_get_form( $form ){
+		$form['form_ajax'] = false;
+		$form['settings']['responsive']['break_point'] = 'xs';
+		return $form;
+	}
 	public function set_preview_form_element($element){
 		return 'div';
 	}
@@ -239,6 +247,10 @@ class Caldera_Forms_Admin {
 	}
 
 	public function bulk_action(){
+
+		// first validate
+		self::verify_ajax_action();
+
 
 		if(empty($_POST['do'])){
 			die;
@@ -381,8 +393,31 @@ class Caldera_Forms_Admin {
 
 			$viewer_buttons = 'data-modal-buttons=\'' . implode(';', $viewer_buttons) . '\'';
 		}
+		$editor_buttons_array = apply_filters( 'caldera_forms_entry_editor_buttons', array());
+		$editor_buttons = null;
+		if(!empty($editor_buttons_array)){
+			$editor_buttons = array();
+			foreach($editor_buttons_array as $button){
 
-		echo '{{#if ../../is_active}}<button class="button button-small ajax-trigger view-entry-btn" data-active-class="none" data-load-class="spinner" ' . $viewer_buttons . ' data-group="viewentry" data-entry="{{_entry_id}}" data-form="{{../../form}}" data-action="get_entry" data-modal="view_entry" data-modal-width="700" data-modal-height="700" data-modal-title="' . __('Entry', 'caldera-forms') . ' # {{_entry_id}}" data-template="#view-entry-tmpl" type="button">' . __('View') . '</button> {{/if}}';		
+				if(is_array($button['config'])){
+					$config = $button['label'].'|'.json_encode($button['config']);
+				}else{
+					$config = $button['label'].'|'.$button['config'];	
+				}
+				if( isset( $button['class'] ) ){
+					$config .= '|' . $button['class'];
+				}
+				$editor_buttons[] = $config;
+			}
+
+			$editor_buttons = 'data-modal-buttons=\'' . implode(';', $editor_buttons) . '\'';
+		}
+
+
+		if( current_user_can( 'edit_others_posts' ) ){
+			echo '{{#if ../../is_active}}<button class="hidden button button-small cfajax-trigger edit-entry-btn" id="edit-entry-{{_entry_id}}" data-active-class="current-edit" data-static="true" data-load-class="spinner" ' . $editor_buttons . ' data-modal-element="div" data-group="editentry" data-entry="{{_entry_id}}" data-form="{{../../form}}" data-request="' . site_url( "/cf-api/" ) . '{{../../form}}/{{_entry_id}}/" data-method="get" data-modal="view_entry" data-modal-width="700" data-modal-height="auto" data-modal-title="' . __('Editing Entry ', 'caldera-forms') . ' #{{_entry_id}}" type="button">' . __('Edit') . '</button> {{/if}}';
+		}
+		echo '{{#if ../../is_active}}<button class="button button-small ajax-trigger view-entry-btn" id="view-entry-{{_entry_id}}" data-active-class="current-view"  data-static="true" data-load-class="spinner" ' . $viewer_buttons . ' data-group="viewentry" data-entry="{{_entry_id}}" data-form="{{../../form}}" data-action="get_entry" data-modal="view_entry" data-modal-width="700" data-modal-height="700" data-modal-title="' . __('Entry', 'caldera-forms') . ' #{{_entry_id}}" data-template="#view-entry-tmpl" type="button">' . __('View') . '</button> {{/if}}';		
 		if( current_user_can( 'delete_others_posts' ) ){
 			echo '<button type="button" class="button button-small ajax-trigger" data-load-class="active" data-panel="{{#if ../../is_trash}}trash{{/if}}{{#if ../../is_active}}active{{/if}}" data-do="{{#if ../../is_trash}}active{{/if}}{{#if ../../is_active}}trash{{/if}}" data-callback="cf_refresh_view" data-form="{{../../form}}" data-active-class="disabled" data-group="row{{_entry_id}}" data-load-element="#entry_row_{{_entry_id}}" data-action="cf_bulk_action" data-items="{{_entry_id}}">{{#if ../../is_trash}}' . __('Restore', 'caldera-forms') . '{{/if}}{{#if ../../is_active}}' . __('Trash') . '{{/if}}</button>';
 		}
@@ -392,13 +427,45 @@ class Caldera_Forms_Admin {
 	public static function set_viewer_buttons($buttons){
 		
 		$buttons['close_panel'] = array(
-			'label'		=>	'Close',
+			'label'		=>	__('Close', 'caldera-forms' ),
 			'config'	=>	'dismiss',
 			'class'		=>	'right'
 		);
+		if( current_user_can( 'edit_others_posts' ) ){
+			$buttons['edit_entry'] = array(
+				'label'		=>	__('Edit Entry', 'caldera-forms' ),
+				'config'	=>	array(
+					'data-trigger'	=> '#edit-entry-{{_entry_id}}'
+				),
+				'class'		=>	'button-primary'
+			);
+		}
 
 		return $buttons;
 	}
+
+	
+	public static function set_editor_buttons($buttons){
+
+		$buttons['submit_form'] = array(
+			'label'		=>	__('Save Changes', 'caldera-forms' ),
+			'config'	=>	array(
+				"data-for" => "#view_entry_baldrickModalBody .caldera_forms_form"
+			),
+			'class'		=>	'right button-primary'
+		);
+		$buttons['view_entry'] = array(
+			'label'		=>	__('View Entry', 'caldera-forms' ),
+			'config'	=>	array(
+				"data-for" => ".view-entry-btn.current-view"
+			),
+			'class'		=>	''
+		);		
+		
+		//$buttons = set_viewer_buttons($buttons);
+		return $buttons;
+	}
+
 
 	public static function save_cf_setting(){
 		if(empty($_POST['set'])){
@@ -441,6 +508,9 @@ class Caldera_Forms_Admin {
 
 	public static function toggle_form_state(){
 		
+		// first validate
+		self::verify_ajax_action();
+
 		$forms = Caldera_Forms::get_forms( true );
 		$form = sanitize_text_field( $_POST['form'] );
 		$form = Caldera_Forms::get_form( $form );
@@ -466,6 +536,17 @@ class Caldera_Forms_Admin {
 	}
 
 	/**
+	 * nonce verifier for ajax actions
+	 *
+	 * @since 1.3.2.1
+	 */
+	private static function verify_ajax_action(){
+		if ( ! isset( $_POST['cf_toolbar_actions'] ) || ! wp_verify_nonce( $_POST['cf_toolbar_actions'], 'cf_toolbar' ) || !check_admin_referer( 'cf_toolbar', 'cf_toolbar_actions' ) ) {
+			wp_send_json_error( $_POST );
+		}
+	}
+
+	/**
 	 * Show entries in admin
 	 *
 	 * @since unknown
@@ -477,11 +558,14 @@ class Caldera_Forms_Admin {
 		}else{
 			$page = 1;
 		}
-
+		$entry_perpage = get_option( '_caldera_forms_entry_perpage', 20 );
 		if ( isset( $_POST[ 'perpage' ] ) && 0 < $_POST[ 'perpage' ] ) {
-			$perpage = absint( $_POST[ 'perpage' ] );
+			$perpage = absint( (int) $_POST[ 'perpage' ] );
+			if( $entry_perpage != $perpage ){
+				update_option( '_caldera_forms_entry_perpage', $perpage );
+			}			
 		}else{
-			$perpage = 20;
+			$perpage = $entry_perpage;
 		}
 
 		if ( isset( $_POST[ 'status' ] ) ) {
@@ -489,8 +573,6 @@ class Caldera_Forms_Admin {
 		}else{
 			$status = 'active';
 		}
-
-
 
 		$form = Caldera_Forms::get_form( $_POST['form'] );
 			
@@ -740,22 +822,22 @@ class Caldera_Forms_Admin {
 		$forms = Caldera_Forms::get_forms();
 
 		// get current user
-		if( current_user_can( 'manage_options' ) ){
+		if( current_user_can( Caldera_Forms::get_manage_cap() ) ){
 		
-			$this->screen_prefix[] = add_menu_page( __('Caldera Forms', 'caldera-forms'), __('Caldera Forms', 'caldera-forms'), 'manage_options', $this->plugin_slug, array( $this, 'render_admin' ), 'dashicons-cf-logo', 52.999 );
-			add_submenu_page( $this->plugin_slug, __('Caldera Forms Admin', 'caldera-forms'), __('Forms', 'caldera-forms'), 'manage_options', $this->plugin_slug, array( $this, 'render_admin' ) );
+			$this->screen_prefix[] = add_menu_page( __('Caldera Forms', 'caldera-forms'), __('Caldera Forms', 'caldera-forms'), Caldera_Forms::get_manage_cap(), $this->plugin_slug, array( $this, 'render_admin' ), 'dashicons-cf-logo', 52.81321 );
+			add_submenu_page( $this->plugin_slug, __('Caldera Forms Admin', 'caldera-forms'), __('Forms', 'caldera-forms'), Caldera_Forms::get_manage_cap(), $this->plugin_slug, array( $this, 'render_admin' ) );
 			
 			if( ! empty( $forms ) ){
 				foreach($forms as $form_id=>$form){
 					if(!empty($form['pinned'])){
-						$this->screen_prefix[] 	 = add_submenu_page( $this->plugin_slug, __('Caldera Forms', 'caldera-forms').' - ' . $form['name'], '- '.$form['name'], 'manage_options', $this->plugin_slug . '-pin-' . $form_id, array( $this, 'render_admin' ) );
+						$this->screen_prefix[] 	 = add_submenu_page( $this->plugin_slug, __('Caldera Forms', 'caldera-forms').' - ' . $form['name'], '- '.$form['name'], Caldera_Forms::get_manage_cap(), $this->plugin_slug . '-pin-' . $form_id, array( $this, 'render_admin' ) );
 					}
 				}
 			}	
 
 
-			$this->screen_prefix[] 	 = add_submenu_page( $this->plugin_slug, __('Caldera Forms', 'caldera-forms') .' - '. __('Community', 'caldera-forms'), __('Community', 'caldera-forms'), 'manage_options', $this->plugin_slug . '-community', array( $this, 'render_admin' ) );
-			$this->screen_prefix[] 	 = add_submenu_page( $this->plugin_slug, __('Caldera Forms', 'caldera-forms') . ' - ' . __('Extend', 'caldera-forms'), __('Extend', 'caldera-forms'), 'manage_options', $this->plugin_slug . '-exend', array( $this, 'render_admin' ) );
+			$this->screen_prefix[] 	 = add_submenu_page( $this->plugin_slug, __('Caldera Forms', 'caldera-forms') .' - '. __('Community', 'caldera-forms'), __('Community', 'caldera-forms'), Caldera_Forms::get_manage_cap(), $this->plugin_slug . '-community', array( $this, 'render_admin' ) );
+			$this->screen_prefix[] 	 = add_submenu_page( $this->plugin_slug, __('Caldera Forms', 'caldera-forms') . ' - ' . __('Extend', 'caldera-forms'), __('Extend', 'caldera-forms'), Caldera_Forms::get_manage_cap(), $this->plugin_slug . '-exend', array( $this, 'render_admin' ) );
 		}else{
 			// not an admin - pin for user
 			if( ! empty( $forms ) ){
@@ -875,6 +957,45 @@ class Caldera_Forms_Admin {
 			wp_enqueue_script( 'jquery-ui-users' );
 			wp_enqueue_script( 'jquery-ui-sortable' );
 			wp_enqueue_script( 'jquery-ui-droppable' );
+
+		}else{
+
+			$field_types = apply_filters( 'caldera_forms_get_field_types', array() );
+			
+			wp_enqueue_style( 'cf-grid-styles' );
+			wp_enqueue_style( 'cf-form-styles' );
+			wp_enqueue_style( 'cf-alert-styles' );
+			wp_enqueue_style( 'cf-field-styles' );
+
+			wp_enqueue_script( 'cf-field' );
+			wp_enqueue_script( 'cf-conditionals' );
+			wp_enqueue_script( 'cf-validator' );
+			wp_enqueue_script( 'cf-init' );
+
+			foreach( $field_types as $field ){
+				if( !empty( $field['styles'])){
+					foreach($field['styles'] as $style){
+						if( false !== strpos($style, '//')){
+							wp_enqueue_style( 'cf-' . sanitize_key( basename( $style ) ), $style, array() );
+						}else{
+							wp_enqueue_style( $style );
+						}
+					}
+				}
+
+				//enqueue scripts
+				if( !empty( $field['scripts'])){
+					// check for jquery deps
+					$depts[] = 'jquery';
+					foreach($field['scripts'] as $script){
+						if( false !== strpos($script, '//')){
+							wp_enqueue_script( 'cf-' . sanitize_key( basename( $script ) ), $script, $depts );
+						}else{
+							wp_enqueue_script( $script );
+						}
+					}
+				}	
+			}
 
 		}
 		if(!empty($_GET['edit-entry'])){
@@ -1011,7 +1132,7 @@ class Caldera_Forms_Admin {
 	static function save_form(){
 
 		/// check for form delete
-		if(!empty($_GET['delete']) && !empty($_GET['cal_del']) && current_user_can( 'manage_options' ) ){
+		if(!empty($_GET['delete']) && !empty($_GET['cal_del']) && current_user_can( Caldera_Forms::get_manage_cap( 'save' ) ) ){
 
 			if ( ! wp_verify_nonce( $_GET['cal_del'], 'cf_del_frm' ) ) {
 				// This nonce is not valid.
@@ -1040,7 +1161,7 @@ class Caldera_Forms_Admin {
 			}
 			
 		}
-		if( isset($_POST['cfimporter']) && current_user_can( 'manage_options' ) ){
+		if( isset($_POST['cfimporter']) && current_user_can( Caldera_Forms::get_manage_cap( 'import' ) ) ){
 
 			if ( check_admin_referer( 'cf-import', 'cfimporter' ) ) {
 				if(!empty($_FILES['import_file']['size'])){
@@ -1181,7 +1302,7 @@ class Caldera_Forms_Admin {
 			}
 
 		}
-		if(!empty($_GET['export-form']) && current_user_can( 'manage_options' )){
+		if(!empty($_GET['export-form']) && current_user_can( Caldera_Forms::get_manage_cap( 'export' ) )){
 
 			$form = Caldera_Forms::get_form( $_GET['export-form'] );
 
@@ -1193,14 +1314,48 @@ class Caldera_Forms_Admin {
 			header("Expires: 0");
 			header("Cache-Control: must-revalidate, post-check=0, pre-check=0");
 			header("Cache-Control: private",false);
-			header("Content-Type: application/json");
-			header("Content-Disposition: attachment; filename=\"" . sanitize_file_name( strtolower( $form['name'] ) ) . "-export.json\";" );
-			echo json_encode($form);
+			if( empty( $_GET['format'] ) || $_GET['format'] != 'php' ){
+				header("Content-Type: application/json");
+				header("Content-Disposition: attachment; filename=\"" . sanitize_file_name( strtolower( $form['name'] ) ) . "-export.json\";" );
+				echo json_encode($form);
+			}else{
+
+				$form_id = sanitize_key( $_GET['form_id'] );
+				if( !empty( $_GET['pin_menu'] ) ){
+					$form['pinned'] = 1;
+				}
+				header("Content-Type: application/php");
+				header("Content-Disposition: attachment; filename=\"" . sanitize_file_name( strtolower( $form_id ) ) . "-include.php\";" );
+				echo '<?php' . "\r\n";
+				echo "/**\r\n * Caldera Forms - PHP Export \r\n * {$form['name']} \r\n * @version    " . CFCORE_VER . "\r\n * @license   GPL-2.0+\r\n * \r\n */\r\n\r\n\r\n";
+
+				$structure = "/**\r\n * Filter admin forms to include custom form in admin\r\n *\r\n * @since 1.3.1\r\n *\r\n * @param array all registered forms\r\n */\r\n";
+				$structure .= 'add_filter( "caldera_forms_get_forms", function( $forms ){' . "\r\n";
+  				$structure .= "\t" . '$forms["' . $form_id . '"] = apply_filters( "caldera_forms_get_form-' . $form_id . '", array() );' . "\r\n";
+ 				$structure .= "\t" . 'return $forms;' . "\r\n";
+				$structure .= "} );\r\n\r\n";
+
+				$structure .= "/**\r\n * Filter form request to include form structure to be rendered\r\n *\r\n * @since 1.3.1\r\n *\r\n * @param array form structure\r\n */\r\n";
+				$structure .= "add_filter( 'caldera_forms_get_form-{$form_id}', function(){\r\n return " . var_export( $form, true ) . ";\r\n" . '} );' . "\r\n";
+				// cleanups because I'm me
+				$structure = str_replace( 'array (', 'array(', $structure );
+				$structure = str_replace( $form['ID'], $form_id, $structure );
+				// switch field IDs
+				if( !empty( $_GET['convert_slugs'] ) ){
+					if ( !empty( $form['fields'] ) ){
+						foreach( $form['fields'] as $field_id=>$field ){
+							$structure = str_replace( $field_id, $field['slug'], $structure );
+						}
+					}
+				}
+
+				echo $structure;
+			}
 			exit;
 
 		}
 
-		if(!empty($_GET['export']) && current_user_can( 'manage_options') ){
+		if(!empty($_GET['export']) && current_user_can( Caldera_Forms::get_manage_cap( 'export' )) ){
 
 			$form = Caldera_Forms::get_form( $_GET['export'] );
 
@@ -1298,7 +1453,7 @@ class Caldera_Forms_Admin {
 			exit;			
 		}
 
-		if( isset($_POST['config']) && isset( $_POST['cf_edit_nonce'] ) && current_user_can( 'manage_options' ) ){
+		if( isset($_POST['config']) && isset( $_POST['cf_edit_nonce'] ) && current_user_can( Caldera_Forms::get_manage_cap( 'manage' ) ) ){
 			
 			// if this fails, check_admin_referer() will automatically print a "failed" page and die.
 			if ( check_admin_referer( 'cf_edit_element', 'cf_edit_nonce' ) ) {
@@ -1406,6 +1561,7 @@ class Caldera_Forms_Admin {
 			"form_ajax"		=> 1,
 			"hide_form"		=> 1,
 			"check_honey" 	=> 1,
+			'mailer'		=>	array( 'on_insert' => 1 )
 		);
 		// is template?
 		if( !empty( $form_template ) && is_array( $form_template ) ){
@@ -1502,7 +1658,7 @@ class Caldera_Forms_Admin {
 					"responsive" => array(
 						"name" => __("Responsive", 'caldera-forms'),
 						"location" => "lower",
-						"label" => __("Resposive Settings", 'caldera-forms'),
+						"label" => __("Responsive Settings", 'caldera-forms'),
 						"repeat" => 0,
 						"fields" => array(
 							"break_point" => array(

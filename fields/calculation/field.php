@@ -40,7 +40,7 @@ if(!empty($field['config']['manual'])){
 
 			foreach($form['fields'] as $key_id=>$fcfg){
 				if($fcfg['slug'] === $tag){
-					$binds[] = '#'.$key_id.'_'.$current_form_count;
+					$binds[] = '[data-field="'.$key_id.'"]';
 					$bindfields[] = '"'.$key_id.'_'.$current_form_count.'"';
 					$formula = str_replace($hastags[0][$tag_key], $key_id, $formula);
 				}
@@ -49,7 +49,6 @@ if(!empty($field['config']['manual'])){
 	}
 	// fix POW
 	$formula = str_replace('pow(', 'Math.pow(', $formula);
-
 }
 $formula = str_replace("\r",'', str_replace("\n",'', str_replace(' ','', trim( self::do_magic_tags( $formula ) ) ) ) );
 $binds = array();
@@ -58,11 +57,12 @@ $binds_vars = array();
 foreach($form['fields'] as $fid=>$cfg){
 	if(false !== strpos($formula, $fid)){
 		//dump($cfg,0);
-		$formula = str_replace($fid, $fid.'_'.$current_form_count, $formula);
-		$binds_vars[] = $fid.'_'.$current_form_count." = parseFloat( $('[data-field=\"".$fid.'_'.$current_form_count."\"]').is(':checkbox') ? checked_total_" . $field_base_id. "($('[data-field=\"".$fid.'_'.$current_form_count."\"]:checked')) : $('[data-field=\"".$fid.'_'.$current_form_count."\"]').is(':radio') ? $('[data-field=\"".$fid.'_'.$current_form_count."\"]:checked').val() : $('[data-field=\"".$fid.'_'.$current_form_count."\"]').val() ) || 0 ";
-		$binds[] = "[data-field=\"".$fid.'_'.$current_form_count."\"]";
+		$formula = str_replace($fid, $fid, $formula);
+		$binds_vars[] = $fid." = parseFloat( $('[data-field=\"".$fid."\"]').is(':checkbox') ? checked_total_" . $field_base_id. "($('[data-field=\"".$fid."\"]:checked')) : $('[data-field=\"".$fid."\"]').is(':radio') ? $('[data-field=\"".$fid."\"]:checked').val() : $('[data-field=\"".$fid."\"]').val() ) || 0 ";
+
+		$binds[] = "[data-field=\"".$fid."\"]";
 		// include a conditional wrapper
-		$binds_wrap[] = "#conditional_".$fid.'_'.$current_form_count;		
+		$binds_wrap[] = "#conditional_".$fid;		
 	}
 }
 
@@ -77,17 +77,17 @@ if(!empty($binds)){
 
 		function checked_total_<?php echo $field_base_id; ?>(items){
 			var sum = 0;
+			
 			items.each(function(k,v){
 				var val = $(v).val();
 				sum += parseFloat( val );
-			})
+			});
 			return sum;
 		}
 		function docalc_<?php echo $field_base_id; ?>(){
 			var <?php echo implode(', ',$binds_vars); ?>,
 				total = <?php echo $formula; ?>,
 				view_total = total;
-
 
 			<?php if(!empty($field['config']['fixed'])){ ?>
 			function addCommas(nStr){
@@ -122,6 +122,10 @@ if(!empty($binds)){
 <?php 
 
 	$script_template = ob_get_clean();
-	$grid->append( $script_template, $location );
+	if( ! empty( $form[ 'grid_object' ] ) && is_object( $form[ 'grid_object' ] ) ){
+		$form[ 'grid_object' ]->append( $script_template, $field[ 'grid_location' ] );
+	}else{
+		echo $script_template;
+	}
 
 } ?>

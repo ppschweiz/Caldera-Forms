@@ -9,14 +9,19 @@ function cf_handle_multi_view( $data, $field ){
 	}
 	// can put in the value as well.
 	$viewer = array();
+
 	foreach( $data as $key=>$value ){
-		if( isset( $field['config']['option'][ $key ]['value'] ) ){
-			$viewer[] = $field['config']['option'][ $key ]['label'] . ' (' . $field['config']['option'][ $key ]['value'] . ')';
-		}else{
-			$viewer[] = $value;
+
+		foreach( $field['config']['option'] as $option_key=>$option ){
+			if( $value == $option['value'] ){
+				$viewer[$key] = $option['label'] . ' (' . $option['value'] . ')';
+			}
 		}
+		if( !isset( $viewer[$key] ) ){
+			$viewer[$key] = $value;
+		}
+		
 	}
-	
 	return implode( ', ', $viewer );
 
 }
@@ -33,7 +38,7 @@ function cf_handle_file_upload($entry, $field, $form){
 			$types = explode(',',$field['config']['allowed']);
 
 			foreach($types as &$type){
-				$type=trim($type);
+				$type = trim( trim( $type,'.' ) );
 			}
 			foreach( (array) $_FILES[$field['ID']]['name'] as $file_name ){
 				if( empty( $file_name ) ){
