@@ -80,11 +80,22 @@ jQuery(function($){
 				}
 				
 				if(obj.data.fields){
+
 					for(var i in obj.data.fields){
-						var field = $('[data-field="' + i + '_' + instance + '"]'),
-							wrap = field.closest('.form-group');
+						var field = obj.params.trigger.find('[data-field="' + i + '"]'),
+							wrap = field.parent();
+						if( wrap.is('label') ){
+							wrap = wrap.parent();
+							if( wrap.hasClass('checkbox') || wrap.hasClass('radio') ){
+								wrap = wrap.parent();
+							}
+						}
+						var has_block = wrap.find('.help-block').not('.caldera_ajax_error_block');
 
 							wrap.addClass('has-error').addClass('caldera_ajax_error_wrap');
+							if( has_block.length ){
+								has_block.hide();
+							}
 							wrap.append('<span class="help-block caldera_ajax_error_block">' + obj.data.fields[i] + '</span>');
 					}
 				}
