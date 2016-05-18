@@ -4,10 +4,10 @@ if(!empty($field['config']['pollyfill'])){
 	$polyfill = 'true';
 }
 if(!empty($field['config']['suffix'])){
-	$field['config']['suffix'] = self::do_magic_tags($field['config']['suffix']);
+	$field['config']['suffix'] = Caldera_Forms::do_magic_tags($field['config']['suffix']);
 }
 if(!empty($field['config']['prefix'])){
-	$field['config']['prefix'] = self::do_magic_tags($field['config']['prefix']);
+	$field['config']['prefix'] = Caldera_Forms::do_magic_tags($field['config']['prefix']);
 }
 
 if ( is_array( $field_value ) )  {
@@ -30,29 +30,32 @@ if ( is_array( $field_value ) )  {
 		<?php echo $field_caption; ?>
 	<?php echo $field_after; ?>
 <?php echo $wrapper_after; ?>
+<?php ob_start(); ?>
 <script type="text/javascript">
 	jQuery(function($){
 
-		function init_rangeslider(){
+		function init_rangeslider_<?php echo $field_id; ?>(){
 			var el = $('#<?php echo $field_id; ?>'),
 				rangeslider;
 			<?php if(empty($field['config']['pollyfill'])){ ?>
 			if (el.is(':visible')) {
-				rangeslider = el.rangeslider({
-					onSlide: function(position, value) {
-						<?php
-							if( false !== strpos( $field['config']['step'], '.' ) ){
-								$part = explode('.', $field['config']['step'] );								
-						?>
-						value = value.toFixed( <?php echo strlen( $part[1] ); ?> );
-						<?php } ?>
-						$('#<?php echo $field_id; ?>_value').html(value);
-					},
-					polyfill: <?php echo $polyfill; ?>
-				});
-				rangeslider.parent().find('.rangeslider').css('backgroundColor', rangeslider.data('trackcolor'));
-				rangeslider.parent().find('.rangeslider__fill').css('backgroundColor', rangeslider.data('color'));
-				rangeslider.parent().find('.rangeslider__handle').css('backgroundColor', rangeslider.data('handle')).css('borderColor', rangeslider.data('handleborder'));
+				if( !el.data( 'plugin_rangeslider' ) ){
+					rangeslider = el.rangeslider({
+						onSlide: function(position, value) {
+							<?php
+								if( false !== strpos( $field['config']['step'], '.' ) ){
+									$part = explode('.', $field['config']['step'] );								
+							?>
+							value = value.toFixed( <?php echo strlen( $part[1] ); ?> );
+							<?php } ?>
+							$('#<?php echo $field_id; ?>_value').html(value);
+						},
+						polyfill: <?php echo $polyfill; ?>
+					});
+					rangeslider.parent().find('.rangeslider').css('backgroundColor', rangeslider.data('trackcolor'));
+					rangeslider.parent().find('.rangeslider__fill').css('backgroundColor', rangeslider.data('color'));
+					rangeslider.parent().find('.rangeslider__handle').css('backgroundColor', rangeslider.data('handle')).css('borderColor', rangeslider.data('handleborder'));
+				}
 			}else{
 				el.rangeslider('destroy');
 			}
@@ -65,12 +68,20 @@ if ( is_array( $field_value ) )  {
 		}
 		<?php if(empty($field['config']['pollyfill'])){ ?>
 		// setup tabs
-		$(document).on('cf.pagenav', function(){
-			init_rangeslider();
+		$(document).on('cf.pagenav cf.add cf.disable cf.modal', function(){
+			init_rangeslider_<?php echo $field_id; ?>();
 		});
 		<?php } ?>
 		// init slider
-		init_rangeslider();
+		init_rangeslider_<?php echo $field_id; ?>();
 
 	});
 </script>
+<?php
+	$script_template = ob_get_clean();
+	if( ! empty( $form[ 'grid_object' ] ) && is_object( $form[ 'grid_object' ] ) ){
+		$form[ 'grid_object' ]->append( $script_template, $field[ 'grid_location' ] );
+	}else{
+		echo $script_template;
+	}
+?>

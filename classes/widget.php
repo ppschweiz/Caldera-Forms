@@ -3,11 +3,24 @@
 
 class Caldera_Forms_Widget extends WP_Widget {
 
-	function Caldera_Forms_Widget() {
+	/**
+	 * Create widget
+	 *
+	 * @since unknown
+	 */
+	function __construct() {
 		// Instantiate the parent object
 		parent::__construct( false, __('Caldera Form', 'caldera-forms' ) );
 	}
 
+	/**
+	 * Widget output
+	 *
+	 * @since unknown
+	 *
+	 * @param array $args
+	 * @param array $instance
+	 */
 	function widget( $args, $instance ) {
 
 		if(!empty($instance['form'])){
@@ -28,11 +41,28 @@ class Caldera_Forms_Widget extends WP_Widget {
 		}
 	}
 
+	/**
+	 * Update widget settings
+	 *
+	 * @since unknown
+	 *
+	 * @param array $new_instance
+	 * @param array $old_instance
+	 *
+	 * @return array
+	 */
 	function update( $new_instance, $old_instance ) {
 		// Save widget options
 		return $new_instance;
 	}
 
+	/**
+	 * Widget UI form
+	 *
+	 * @since unknown
+	 *
+	 * @param array $instance
+	 */
 	function form( $instance ) {
 
 		$instance = wp_parse_args( (array) $instance, array( 'title' => '' ) );
@@ -42,7 +72,7 @@ class Caldera_Forms_Widget extends WP_Widget {
 
 		echo "<p><label for=\" " . $this->get_field_id('title') . "\">" . __('Title', 'caldera-forms') . ": <input class=\"widefat\" id=\"" . $this->get_field_id('title') . "\" name=\"" . $this->get_field_name('title') . "\" type=\"text\" value=\"" . esc_attr($title). "\" /></label></p>\r\n";
 		// get forms
-		$forms = Caldera_Forms::get_forms();
+		$forms = Caldera_Forms_Forms::get_forms( true );
 
 		echo "<p><label for=\" " . $this->get_field_id('title') . "\">" . __('Form', 'caldera-forms') . ": </label><select style=\"width:100%;\" name=\"" . $this->get_field_name('form') . "\">\r\n";
 		echo "<option value=\"\"></option>\r\n";
@@ -64,8 +94,8 @@ class Caldera_Forms_Widget extends WP_Widget {
 	}
 }
 
-function register_caldera_form_widget() {
+function caldera_forms_register_widget() {
 	register_widget( 'Caldera_Forms_Widget' );
 }
 
-add_action( 'widgets_init', 'register_caldera_form_widget' );
+add_action( 'widgets_init', 'caldera_forms_register_widget' );

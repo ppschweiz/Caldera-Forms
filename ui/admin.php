@@ -5,10 +5,11 @@ $per_page_limit = 20;
 
 
 // get all forms
-$forms = Caldera_Forms::get_forms();
+$forms = Caldera_Forms_Forms::get_forms( true );
 $forms = apply_filters( 'caldera_forms_admin_forms', $forms );
 
 $style_includes = get_option( '_caldera_forms_styleincludes' );
+$entry_perpage = get_option( '_caldera_forms_entry_perpage', 20 );
 if(empty($style_includes)){
 	$style_includes = array(
 		'alert'	=>	true,
@@ -38,19 +39,19 @@ $modal_new_form = __('Create Form', 'caldera-forms').'|{"data-action" : "create_
 			<a class="button ajax-trigger" data-request="start_new_form" data-modal-buttons='<?php echo $modal_new_form; ?>' data-modal-width="600" data-modal-height="400" data-load-class="none" data-modal="new_form" data-modal-title="<?php echo __('Create New Form', 'caldera-forms'); ?>" data-template="#new-form-tmpl"><?php echo __('New Form', 'caldera-forms'); ?></a>
 		</li>
 		<li class="caldera-forms-toolbar-item">
-			<a class="button ajax-trigger" data-request="start_new_form" data-modal-width="400" data-modal-height="192" data-modal-element="div" data-load-class="none" data-modal="new_form" data-template="#import-form-tmpl" data-modal-title="<?php echo __('Import Form', 'caldera-forms'); ?>" ><?php echo __('Import', 'caldera-forms'); ?></a>
+			<a class="button ajax-trigger" data-request="start_new_form" data-modal-width="400" data-modal-height="192" data-modal-element="div" data-load-class="none" data-modal="import_form" data-template="#import-form-tmpl" data-modal-title="<?php echo __('Import Form', 'caldera-forms'); ?>" ><?php echo __('Import', 'caldera-forms'); ?></a>
 		</li>
 		<li class="caldera-forms-toolbar-item">
 		&nbsp;&nbsp;
 		</li>
 		<li class="caldera-forms-headtext">
-			<?php echo __('Front-end Style Includes', 'caldera-forms'); ?>
+			<?php echo __('Render forms with:', 'caldera-forms'); ?>
 		</li>
 		<li class="caldera-forms-toolbar-item">
 			<div class="toggle_option_preview">
-				<button type="button" title="<?php echo __('Includes Bootstrap 3 styles on the frontend for form alert notices', 'caldera-forms'); ?>" data-action="save_cf_setting" data-active-class="none" data-set="alert" data-callback="update_setting_toggle" class="ajax-trigger setting_toggle_alert button <?php if(!empty($style_includes['alert'])){ ?>button-primary<?php } ?>"><?php echo __('Alert' , 'caldera-forms'); ?></button>
-				<button type="button" title="<?php echo __('Includes Bootstrap 3 styles on the frontend for form fields and buttons', 'caldera-forms'); ?>" data-action="save_cf_setting" data-active-class="none" data-set="form" data-callback="update_setting_toggle" class="ajax-trigger setting_toggle_form button <?php if(!empty($style_includes['form'])){ ?>button-primary<?php } ?>"><?php echo __('Form' , 'caldera-forms'); ?></button>
-				<button type="button" title="<?php echo __('Includes Bootstrap 3 styles on the frontend for form grid layouts', 'caldera-forms'); ?>" data-action="save_cf_setting" data-active-class="none" data-set="grid" data-callback="update_setting_toggle" class="ajax-trigger setting_toggle_grid button <?php if(!empty($style_includes['grid'])){ ?>button-primary<?php } ?>"><?php echo __('Grid' , 'caldera-forms'); ?></button>
+				<button type="button" title="<?php echo __('Includes Bootstrap 3 styles on the frontend for form alert notices', 'caldera-forms'); ?>" data-action="save_cf_setting" data-active-class="none" data-set="alert" data-callback="update_setting_toggle" class="ajax-trigger setting_toggle_alert button <?php if(!empty($style_includes['alert'])){ ?>button-primary<?php } ?>"><?php echo __('Alert Styles' , 'caldera-forms'); ?></button>
+				<button type="button" title="<?php echo __('Includes Bootstrap 3 styles on the frontend for form fields and buttons', 'caldera-forms'); ?>" data-action="save_cf_setting" data-active-class="none" data-set="form" data-callback="update_setting_toggle" class="ajax-trigger setting_toggle_form button <?php if(!empty($style_includes['form'])){ ?>button-primary<?php } ?>"><?php echo __('Form Styles' , 'caldera-forms'); ?></button>
+				<button type="button" title="<?php echo __('Includes Bootstrap 3 styles on the frontend for form grid layouts', 'caldera-forms'); ?>" data-action="save_cf_setting" data-active-class="none" data-set="grid" data-callback="update_setting_toggle" class="ajax-trigger setting_toggle_grid button <?php if(!empty($style_includes['grid'])){ ?>button-primary<?php } ?>"><?php echo __('Grid Structures' , 'caldera-forms'); ?></button>
 			</div>
 		</li>
 		<li class="caldera-forms-toolbar-item">
@@ -61,7 +62,23 @@ $modal_new_form = __('Create Form', 'caldera-forms').'|{"data-action" : "create_
 </div>
 <div class="form-admin-page-wrap">
 	<div class="form-panel-wrap">
-	<?php if(!empty($forms)){ ?>
+	<?php
+
+	// admin notices
+
+
+	?>
+	<div class="cf-notification" style="display:none;">
+		<span class="dashicons dashicons-arrow-down cf-notice-toggle"></span>
+		<span class="dashicons dashicons-arrow-up cf-notice-toggle" style="display:none;"></span>
+		<div class="cf-notification-notice">
+			<span class="dashicons dashicons-warning"></span>
+			<span class="cf-notice-info-line"></span>
+		</div>
+		<div class="cf-notification-count"></div>
+		<div class="cf-notification-panel"></div>
+	</div>
+	<?php if(! empty( $forms ) ){ ?>
 		<table class="widefat fixed">
 			<thead>
 				<tr>
@@ -122,7 +139,23 @@ $modal_new_form = __('Create Form', 'caldera-forms').'|{"data-action" : "create_
 						data-page="1"
 
 						><?php echo __('Entries', 'caldera-forms'); ?></a> | </span><?php } ?>
-						<?php if( empty( $form['_external_form'] ) ){ ?><span class="export"><a class="form-control" href="admin.php?page=caldera-forms&export-form=<?php echo $form_id; ?>&cal_del=<?php echo wp_create_nonce( 'cf_del_frm' ); ?>"><?php echo __('Export', 'caldera-forms'); ?></a> | </span><?php } ?>
+						<input type="hidden" id="form-export-<?php echo $form_id; ?>" value='{ "formslug" : "<?php echo sanitize_title( $form['name'] ); ?>", "formid" : "<?php echo $form_id; ?>", "nonce" : "<?php echo wp_create_nonce( 'cf_del_frm' ); ?>" }'>
+						<?php if( empty( $form['_external_form'] ) ){ ?><span class="export"><a class="form-control ajax-trigger" 
+							<?php 
+								// build exporter buttons
+								$buttons = array(
+									'data-request' => 'cf_build_export',
+									'data-modal-autoclose' => 'export',
+								);
+							?>
+							data-modal="export"
+							data-modal-height="400"
+							data-modal-title="<?php echo esc_attr( __('Export Form', 'caldera-forms') ); ?>" 
+							data-request="#form-export-<?php echo $form_id; ?>" 
+							data-type="json"
+							data-modal-buttons="<?php echo esc_attr( __( 'Export Form', 'caldera-forms' ) ); ?>|<?php echo esc_attr( json_encode( $buttons ) ); ?>"
+							data-template="#cf-export-template"
+							href="#export"><?php echo __('Export', 'caldera-forms'); ?></a> | </span><?php } ?>
 						<span><a class="ajax-trigger" href="#clone" data-request="start_new_form" data-modal-buttons='<?php echo $modal_new_form; ?>' data-clone="<?php echo $form_id; ?>" data-modal-width="600" data-modal-height="400" data-load-class="none" data-modal="new_form" data-modal-title="<?php echo __('Clone Form', 'caldera-forms'); ?>" data-template="#new-form-tmpl"><?php echo __('Clone', 'caldera-forms'); ?></a><?php if( empty( $form['_external_form'] ) ){ ?> | </span>
 						<span class="trash form-delete"><a class="form-control" data-confirm="<?php echo __('This will delete this form permanently. Continue?', 'caldera-forms'); ?>" href="admin.php?page=caldera-forms&delete=<?php echo $form_id; ?>&cal_del=<?php echo wp_create_nonce( 'cf_del_frm' ); ?>"><?php echo __('Delete'); ?></a></span><?php } ?>
 
@@ -144,7 +177,25 @@ $modal_new_form = __('Create Form', 'caldera-forms').'|{"data-action" : "create_
 		?></tbody>
 		</table>
 		<?php }else{ ?>
-		<p><?php echo __('You don\'t have any forms.', 'caldera-forms'); ?></p>
+		<p>
+			<?php esc_html_e( 'You don\'t have any forms.', 'caldera-forms'); ?>
+		</p>
+		<?php
+			// check db and only show the upgrade if db version is not there since its confusing
+			$db_version = get_option( 'CF_DB', 0 );
+			if( CF_DB > $db_version ) {
+			?>
+			<div id="cf-upgrade-maybe-fail">
+				<p>
+					<?php
+					echo __( sprintf( 'If you recently updated Caldera Forms and can no longer see saved forms, %s',
+						sprintf( '<a href="https://calderawp.com/doc/caldera-forms-form-config-changes/" target="_blank"><strong>%s</strong></a>.', esc_html__( 'no data is lost. Click here for more information', 'caldera-forms' ),  'caldera-forms' ) ) ); ?>
+				</p>
+				<p>
+					<?php printf( '<a href="%s" class="button">%s</a>', esc_url( add_query_arg( array( 'page' => 'caldera-forms', 'cal_db_update' => wp_create_nonce() ) ) ), esc_html__( 'Run The Updater', 'caldera-forms' ) ); ?>
+				</p>
+			</div>
+			<?php } ?>
 		<?php } ?>
 	</div>
 	<div class="form-entries-wrap">
@@ -157,7 +208,9 @@ $modal_new_form = __('Create Form', 'caldera-forms').'|{"data-action" : "create_
 do_action('caldera_forms_admin_templates');
 ?>
 <script type="text/javascript">
-
+function cf_set_limits( el ){
+	jQuery( el ).data('perpage', jQuery('#cf-entries-list-items').val() );
+}
 function set_form_state( obj ){
 	if( true === obj.data.success ){
 
@@ -176,7 +229,6 @@ function new_form_redirect(obj){
 	}
 }
 
-// profile form saver
 function serialize_modal_form(el){
 	
 	var clicked	= jQuery(el),
@@ -185,7 +237,7 @@ function serialize_modal_form(el){
 	
 	//verify name is set
 	if(name.val().length < 1){
-		alert("<?php echo __('An form name is required', 'caldera-forms'); ?>");
+		alert("<?php echo __('A form name is required', 'caldera-forms'); ?>");
 		name.focus().addClass('has-error');
 		return false;
 	}
@@ -221,6 +273,45 @@ function start_new_form(obj){
 	}
 	return {};
 }
+
+var cf_build_export;
+jQuery( function( $ ){
+
+	cf_build_export = function( el ){
+		var export_object = $('#export_baldrickModal').serialize();
+		window.location = "<?php echo esc_attr( admin_url('admin.php?page=caldera-forms' ) ); ?>&" + export_object;
+	}
+
+	var notices = $('.error,.notice,.notice-error');
+
+	if( notices.length ){
+		$('.cf-notice-info-line').html( notices.first().text() );
+		$('.cf-notification-panel').hide();
+		$('.cf-notification').fadeIn();
+		notices.appendTo( $('.cf-notification-panel') );
+		$( '.cf-notice-toggle').click( function(){
+			$( '.cf-notice-toggle').toggle();
+			$('.cf-notification-panel').slideToggle();
+		});
+	}
+	var ready_limit_change;
+	$(document).on('change', '#cf-entries-list-items', function(){
+		if( ready_limit_change ){
+			clearTimeout( ready_limit_change );
+		}
+		ready_limit_change = setTimeout( function(){
+			$('.status_toggles.button-primary').trigger('click');	
+		}, 280 );
+		
+	});
+
+	$( document ).on('submit', '#new_form_baldrickModal', function(e){
+		e.preventDefault();
+		var trigger = $(this).find('button.ajax-trigger');
+		trigger.trigger('click');
+	});
+
+});
 </script>
 <?php
 

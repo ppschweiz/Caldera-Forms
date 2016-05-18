@@ -64,7 +64,9 @@ jQuery(document).ready(function($){
 			}
 
 			var data_fields		= $('.caldera-forms-options-form').formJSON();
-			
+			if( data_fields.conditions ){
+				data_fields.config.conditional_groups = { conditions : data_fields.conditions };
+			}
 			$(el).data('cf_edit_nonce', data_fields.cf_edit_nonce);
 			$(el).data('_wp_http_referer', data_fields._wp_http_referer);
 			$(el).data('sender', 'ajax');
@@ -98,7 +100,8 @@ jQuery(document).ready(function($){
 	*
 	*/
 	function build_fieldtype_config(el){
-		//console.log(el);
+
+		
 		var select 			= $(el),
 			//templ			= $('#' + select.val() + '_tmpl').length ? $('#' + select.val() + '_tmpl').html() : $('#noconfig_field_templ').html(),
 			parent			= select.closest('.caldera-editor-field-config-wrapper'),
@@ -175,9 +178,31 @@ jQuery(document).ready(function($){
 				}else{
 					build_field_preview( select.data('field') );
 				}
+				$('.caldera-header-save-button').prop('disabled', false);
 				rebuild_field_binding();
 				baldrickTriggers();
 			}
+		if( $('.color-field').length ){
+			$('.color-field').wpColorPicker({
+				change: function(obj){
+					
+					var trigger = $(this);
+
+					
+					if( trigger.data('ev') ){
+						clearTimeout( trigger.data('ev') );
+					}
+					trigger.data('ev', setTimeout( function(){
+						trigger.trigger('record');
+					},200) );
+					if( trigger.data('target') ){
+						$( trigger.data('target') ).css( trigger.data('style'), trigger.val() );
+						$( trigger.data('target') ).val( trigger.val() );
+					}					
+					
+				}
+			});
+		}			
 	}
 
 	function build_field_preview(id){
@@ -311,6 +336,33 @@ jQuery(document).ready(function($){
 	}
 
 	// tabs button
+	$('body').on('click', '.toggle_processor_event input', function(e){
+		var clicked = $(this),
+			parent = clicked.closest( '.wrapper-instance-pane' ),
+			settings = parent.find('.caldera-config-processor-setup'),
+			notice = parent.find('.caldera-config-processor-notice');
+
+
+		if( clicked.is(':checked') ){
+			clicked.parent().addClass('activated');
+			clicked.parent().find('.is_active').show();
+			clicked.parent().find('.not_active').hide();
+		}else{
+			clicked.parent().removeClass('activated');
+			clicked.parent().find('.is_active').hide();
+			clicked.parent().find('.not_active').show();
+		}
+
+		// check if all are selected
+		if( parent.find('.toggle_processor_event .activated').length ){
+			settings.slideDown(100);
+			notice.slideUp(100);
+		}else{
+			settings.slideUp(100);
+			notice.slideDown(100);
+		}
+
+	});
 	$('body').on('click', '.toggle_option_tab > a', function(e){
 
 		e.preventDefault();
@@ -732,7 +784,7 @@ jQuery(document).ready(function($){
 
 	});
 
-	$('.caldera-editor-body').on('change', '.field-config', function(e){
+	$('.caldera-editor-body').on('change record', '.field-config', function(e){
 
 		var field 	= $(this),
 			parent 	= field.closest('.caldera-editor-field-config-wrapper');
@@ -765,7 +817,7 @@ jQuery(document).ready(function($){
 	$('.caldera-editor-body').on('focus', '.caldera-field-bind', function(e){
 		var field = $(this),
 			value = this.value;
-			console.log( e.type );
+			//console.log( e.type );
 		if(e.type && e.type === 'focusin'){
 			field.removeClass('bound_field').addClass('reload-binding');
 			rebind_field_bindings();
@@ -853,7 +905,7 @@ jQuery(document).ready(function($){
 
 		var select = $(this);
 
-		if(this.value !== ''){
+		if( this.value === 'show' || this.value === 'hide' || this.value === 'disable' || this.value === 'use' || this.value === 'not' ){
 			$('#' + select.data('id') + '_condition_group_add').show();
 			$('#' + select.data('id') + '_conditional_wrap').show();
 		}else{
@@ -1104,13 +1156,17 @@ jQuery(document).ready(function($){
 										
 										
 										linetag.on('click', function(){
+											
 											var selected = $(this).data('tag');
 
 
 											input.val( stream.substr(0, start ) + selected + stream.substr( end ) ).trigger('change').focus();
 											input[0].selectionStart = start + selected.length - ( selected.indexOf('*') > 0 ? 2 : 0 );
 											input[0].selectionEnd = start + selected.length - ( selected.indexOf('*') > 0 ? 1 : 0 );
-
+											//stream = null;
+											end = start = input[0].selectionEnd;
+											stream += selected;
+											input.trigger('init.magic');
 										});
 
 										linetag.appendTo(list);
@@ -1184,25 +1240,26 @@ init_magic_tags = function(){
 				currentwrapper.show();
 			}
 			return;			
-		}
-		var magictag = jQuery('<span class="icn-code magic-tag-init"></span>'),
-			wrapper = jQuery('<span style="position:relative;display:inline-block; width:100%;"></span>');
-
-		if(input.is('input')){
-			magictag.css('borderBottom', 'none');
-		}
-
-		if(input.hasClass('caldera-conditional-value-field')){
-			wrapper.width('auto');
-		}
-
-		input.wrap(wrapper);
-		magictag.insertAfter(input);
-		input.addClass('magic-tag-init-bound');
-		if(!input.is(':visible')){
-			magictag.hide();
 		}else{
-			magictag.show();
+			var magictag = jQuery('<span class="icn-code magic-tag-init"></span>'),
+				wrapper = jQuery('<span style="position:relative;display:inline-block; width:100%;"></span>');
+
+			if(input.is('input')){
+				magictag.css('borderBottom', 'none');
+			}
+
+			if(input.hasClass('caldera-conditional-value-field')){
+				wrapper.width('auto');
+			}
+
+			input.wrap(wrapper);
+			magictag.insertAfter(input);
+			input.addClass('magic-tag-init-bound');
+			if(!input.is(':visible')){
+				magictag.hide();
+			}else{
+				magictag.show();
+			}
 		}
 	});
 
@@ -1374,7 +1431,7 @@ rebind_field_bindings = function(){
 				}
 
 				for(var t = 0; t<types.length; t++){
-					if(system_values[type].tags[types[t]]){
+					if( system_values[type].tags && system_values[type].tags[types[t]]){
 						
 						for( var instance = 0; instance < type_instances.length; instance++){
 
@@ -1533,18 +1590,6 @@ function check_required_bindings(el){
 		jQuery('.caldera-forms-options-form').find('a[href="#' + t + '"]').append('<span class="error-tag">' + required_errors[t] + '</span>');
 	}
 	
-	// check for button and update the processor page.
-	if(!jQuery('.preview-caldera-config-group button:submit').length){
-		//jQuery('.caldera-editor-processors-panel-wrap').hide();
-		jQuery('.mailer-errors').show();
-		jQuery('.mailer-control-panel').hide();
-
-	}else{
-		//jQuery('.caldera-editor-processors-panel-wrap').show();
-		jQuery('.mailer-errors').hide();
-		jQuery('.mailer-control-panel').show();
-	}
-
 	jQuery('.caldera-conditional-field-set').trigger('change');
 
 	return all_clear;
@@ -1837,7 +1882,10 @@ jQuery(document).ready(function($) {
 			$('.caldera-add-page').trigger('click');
 			return;
 		}
-		$('.page-active').append('<div class="first-row-level row"><div class="col-xs-12"><div class="layout-column column-container"></div></div></div>');
+		var new_row = $( '<div style="display:none;" class="first-row-level row"><div class="col-xs-12"><div class="layout-column column-container"></div></div></div>' );
+
+		$('.page-active').append( new_row );
+		new_row.slideDown( 200 );
 		buildSortables();
 		buildLayoutString();
 	});
@@ -1981,7 +2029,8 @@ jQuery(document).ready(function($) {
 			}
 
 		$(document).trigger('show.' + panel.data('config'));
-
+		$(document).trigger('show.fieldedit');
+		
 		if( type === 'radio' || type === 'checkbox' || type === 'dropdown' || type === 'toggle_switch' ){
 			$('#' + panel.data('config') + '_auto').trigger('change');
 		}
@@ -2373,6 +2422,21 @@ jQuery(document).ready(function($){
 
 		rebuild_field_binding();
 		baldrickTriggers();
+
+		// initialise baldrick triggers
+		$('.wp-baldrick').baldrick({
+			request     : ajaxurl,
+			method      : 'POST',
+			before		: function(el){
+				
+				var tr = $(el);
+
+				if( tr.data('addNode') && !tr.data('request') ){
+					tr.data('request', 'cf_get_default_setting');
+				}
+			}
+		});
+
 	}
 
 	// build configs on load:

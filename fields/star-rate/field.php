@@ -15,25 +15,38 @@ if(!isset($field['config']['type'])){
 		<?php echo $field_caption; ?>
 	<?php echo $field_after; ?>
 <?php echo $wrapper_after; ?>
+<?php ob_start(); ?>
 <script type="text/javascript">
-	jQuery(function($){		
-		$('#<?php echo $field_id; ?>_stars').raty({
-			starOff	: 'raty-<?php echo $field['config']['type']; ?>-off',
-			starOn : 'raty-<?php echo $field['config']['type']; ?>-on',	
-			target: '#<?php echo $field_id; ?>',
-			spaceWidth: <?php echo $field['config']['space']; ?>, 
-			targetKeep: true, targetType: 'score',
-			<?php if(!empty($field_value)){ echo "score: ".$field_value.","; }; ?> 
-			hints: [1,2,3,4,5], 
-			number: <?php echo $field['config']['number']; ?>, 
-			starType: 'f',
-			starColor: '<?php echo $field['config']['color']; ?>',
-			numberMax: 100,
-			click :function(e){
-				$('#<?php echo $field_id; ?>').trigger('change');
-			}
-			<?php if(!empty($field['config']['cancel'])){ echo ",cancel: true"; }; ?>
-			<?php if(!empty($field['config']['single'])){ echo ",single: true"; }; ?>
-		});
+	jQuery(function($){
+		function <?php echo $field_id; ?>_stars(){
+			$('#<?php echo $field_id; ?>_stars').raty({
+				starOff	: 'raty-<?php echo $field['config']['type']; ?>-off',
+				starOn : 'raty-<?php echo $field['config']['type']; ?>-on',	
+				target: '#<?php echo $field_id; ?>',
+				spaceWidth: <?php echo $field['config']['space']; ?>, 
+				targetKeep: true, targetType: 'score',
+				<?php if(!empty($field_value)){ echo "score: ".$field_value.","; }; ?> 
+				hints: [1,2,3,4,5], 
+				number: <?php echo $field['config']['number']; ?>, 
+				starType: 'f',
+				starColor: '<?php echo $field['config']['color']; ?>',
+				numberMax: 100,
+				click :function(e){
+					$('#<?php echo $field_id; ?>').trigger('change');
+				}
+				<?php if(!empty($field['config']['cancel'])){ echo ",cancel: true"; }; ?>
+				<?php if(!empty($field['config']['single'])){ echo ",single: true"; }; ?>
+			});
+		}
+
+		<?php echo $field_id; ?>_stars();
+		$( document ).on('cf.add', <?php echo $field_id; ?>_stars );
 	});
 </script>
+<?php
+	$script_template = ob_get_clean();
+if( ! empty( $form[ 'grid_object' ] ) && is_object( $form[ 'grid_object' ] ) ){
+		$form[ 'grid_object' ]->append( $script_template, $field[ 'grid_location' ] );
+	}else{
+		echo $script_template;
+	}

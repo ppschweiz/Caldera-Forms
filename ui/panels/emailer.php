@@ -18,26 +18,35 @@ if(!isset($element['mailer']['email_subject'])){
 if(!isset($element['mailer']['email_message'])){
 	$element['mailer']['email_message'] = '{summary}';
 }
-if(!isset($element['mailer']['enable_mailer'])){
-	$element['mailer']['enable_mailer'] = '1';
+
+// comatability
+if( !empty( $element['mailer']['enable_mailer'] ) ){
+	$element['mailer']['on_insert'] = 1;
 }
 
-
-
-
-
 ?>
-<div class="mailer-control-panel">
+<div class="mailer-control-panel wrapper-instance-pane">
 	<div class="caldera-config-group">
-		<label><?php echo __('Mailer', 'caldera-forms'); ?> </label>
+		<label><?php echo __('Send Mailer', 'caldera-forms'); ?> </label>
 		<div class="caldera-config-field">
-			<select class="field-config" id="mailer_status_select" name="config[mailer][enable_mailer]">
-			<option value="0" <?php if($element['mailer']['enable_mailer'] == '0'){ echo 'selected="selected"'; } ?>><?php echo __('Disabled', 'caldera-forms'); ?></option>
-			<option value="1" <?php if($element['mailer']['enable_mailer'] == '1'){ echo 'selected="selected"'; } ?>><?php echo __('Enabled', 'caldera-forms'); ?></option>
-			</select>
+			<div style="float:left;" class="toggle_processor_event">
+
+				<label title="<?php echo esc_attr( __('Enable / Disable Mailer', 'caldera-forms') ); ?>" class="button button-small <?php if( !empty( $element['mailer']['on_insert'] ) ){ echo 'activated'; } ?>"><input type="checkbox" style="display:none;" value="1" name="config[mailer][on_insert]" <?php if( !empty( $element['mailer']['on_insert'] ) ){ echo 'checked="checked"'; } ?>>
+				<span class="is_active" style="<?php if( empty( $element['mailer']['on_insert'] ) ){ ?> display:none;<?php } ?>"><?php esc_html_e( 'Disable Mailer', 'caldera-forms' ); ?></span>
+				<span class="not_active" style="<?php if( !empty( $element['mailer']['on_insert'] ) ){ ?> display:none;<?php } ?>"><?php esc_html_e( 'Enable Mailer', 'caldera-forms' ); ?></span>
+				</label>
+
+				<?php /*<label title="<?php echo esc_attr( __('Send mailer on Update', 'caldera-forms') ); ?>" class="button button-small <?php if( !empty( $element['mailer']['on_update'] )){ echo 'button-primary'; } ?> "><input type="checkbox" style="display:none;" value="1" name="config[mailer][on_update]" <?php if( !empty( $element['mailer']['on_update'] ) ){ echo 'checked="checked"'; } ?>>Update</label>
+				<label class="button button-small <?php if( !empty( $run_times['delete'] )){ echo 'button-primary'; } ?> "><input type="checkbox" style="display:none;" value="1" name="config[processors][<?php echo $id; ?>][runtimes][delete]" <?php if( !empty( $run_times['delete'] )){ echo 'checked="checked"'; } ?>>Delete</label> */ ?>
+			</div>
 		</div>
 	</div>
-	<div class="mailer_config_panel" <?php if($element['mailer']['enable_mailer'] == '0'){ echo 'style="display:none;"'; } ?>>
+
+	<div class="mailer_config_panel caldera-config-processor-notice" style="display:<?php if( empty( $element['mailer']['on_insert'] ) && empty( $element['mailer']['on_insert'] ) ){ ?> block;<?php }else{ ?>none;<?php }?>clear: both; padding: 20px 0px 0px;width:550px;">
+		<p style="padding:12px; text-align:center;background:#e7e7e7;" class="description"><?php _e('Mailer is currently disabled', 'caldera-forms'); ?></p>
+	</div>
+
+	<div class="mailer_config_panel caldera-config-processor-setup" <?php if( empty( $element['mailer']['on_insert'] ) && empty( $element['mailer']['on_insert'] ) ){ echo 'style="display:none;"'; } ?>>
 		<div class="caldera-config-group">
 			<label><?php echo __('From Name', 'caldera-forms'); ?> </label>
 			<div class="caldera-config-field">
@@ -48,7 +57,7 @@ if(!isset($element['mailer']['enable_mailer'])){
 		<div class="caldera-config-group">
 			<label><?php echo __('From Email', 'caldera-forms'); ?> </label>
 			<div class="caldera-config-field">
-				<input type="text" class="field-config magic-tag-enabled" name="config[mailer][sender_email]" value="<?php echo $element['mailer']['sender_email']; ?>" style="width:400px;">
+				<input type="email" class="field-config" name="config[mailer][sender_email]" value="<?php echo $element['mailer']['sender_email']; ?>" style="width:400px;">
 				<p class="description"><?php echo __('Email Address from which the mail comes. Try not to use a field from the form. Rather use your own email and use a form field in the "Reply To Email" below.', 'caldera-forms'); ?></p>
 			</div>
 		</div>
@@ -81,7 +90,7 @@ if(!isset($element['mailer']['enable_mailer'])){
 			<label><?php echo __('Recipients', 'caldera-forms'); ?> </label>
 			<div class="caldera-config-field">
 				<input type="text" class="field-config magic-tag-enabled" name="config[mailer][recipients]" value="<?php echo $element['mailer']['recipients']; ?>" style="width:400px;">
-				<p class="description"><?php echo __('Comma separated list of email addresses.', 'caldera-forms'); ?></p>
+				<p class="description"><?php echo __('Comma separated list of email addresses to send the message to.', 'caldera-forms'); ?></p>
 			</div>
 
 		</div>
@@ -89,7 +98,7 @@ if(!isset($element['mailer']['enable_mailer'])){
 			<label><?php echo __('BCC', 'caldera-forms'); ?> </label>
 			<div class="caldera-config-field">
 				<input type="text" class="field-config magic-tag-enabled" name="config[mailer][bcc_to]" value="<?php if(isset( $element['mailer']['bcc_to'] ) ){ echo $element['mailer']['bcc_to']; } ?>" style="width:400px;">
-				<p class="description"><?php echo __('Comma separated list of email addresses.', 'caldera-forms'); ?></p>
+				<p class="description"><?php echo __('Comma separated list of email addresses to send a BCC to.', 'caldera-forms'); ?></p>
 			</div>
 		</div>
 
@@ -108,23 +117,22 @@ if(!isset($element['mailer']['enable_mailer'])){
 			</div>
 		</div>
 
+		<?php do_action( 'caldera_forms_mailer_config', $element ); ?>
+
 
 		<div class="caldera-config-group">
 			<label><?php echo __('Debug Mailer', 'caldera-forms'); ?></label>
 			<div class="caldera-config-field">
-				<label><input type="checkbox" value="1" name="config[debug_mailer]" class="field-config"<?php if(isset($element['debug_mailer'])){ echo ' checked="checked"'; } ?>> <?php echo __('Enable email send transation log', 'caldera-forms'); ?></label>
+				<label><input type="checkbox" value="1" name="config[debug_mailer]" class="field-config"<?php if(isset($element['debug_mailer'])){ echo ' checked="checked"'; } ?>> <?php echo __('Enable email send transaction log', 'caldera-forms'); ?></label>
 				<p class="description"><?php echo __('If set, entries will have a "Mailer Debug" meta tab to see the transaction log. Do not keep this enabled on production as it sends two emails for tracking.', 'caldera-forms'); ?></p>
+				<p class="description">
+					<?php _e( sprintf( 'If you are having email issues, we strongly recommend configuring a third-party mailer service, which is easy to do. %1s.',  sprintf( '<a href="https://calderawp.com/doc/improving-the-reliability-of-emails-sent-through-caldera-forms/" target="_blank" rel="nofollow">%1s</a>' , __( 'Learn more here', 'caldera-forms' ),  'caldera-forms')  ) ); ?>
+				</p>
 			</div>
 		</div>
 
-		<?php do_action( 'caldera_forms_mailer_config', $element ); ?>
-
 	</div>
 </div>
-<div class="mailer-errors" style="display:none;">
-	<p><?php echo __('Please add a "Button" element and set it to "Submit" if you want to have the form submittable.', 'caldera-forms'); ?></p>
-</div>
-
 
 
 	
