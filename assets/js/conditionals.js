@@ -21,7 +21,20 @@ var calders_forms_check_conditions, calders_forms_init_conditions;
 			return -1;
 		};
 	}
-
+	cf_debounce = function(func, wait, immediate) {
+		var timeout;		
+		return function() {
+			var context = this, args = arguments;
+			var later = function() {
+				timeout = null;
+				if (!immediate) func.apply(context, args);
+			};
+			var callNow = immediate && !timeout;
+			clearTimeout(timeout);
+			timeout = setTimeout(later, wait);
+			if (callNow) func.apply(context, args);
+		};
+	};	
 	calders_forms_check_conditions = function( inst_id ){
 
 		if( typeof caldera_conditionals === "undefined" || typeof caldera_conditionals[inst_id] === "undefined"){
@@ -29,10 +42,8 @@ var calders_forms_check_conditions, calders_forms_init_conditions;
 		}
 		var form = $( '#' + inst_id );
 		for( var field in caldera_conditionals[ inst_id ] ){
-
 			// each conditional
 			var fieldwrapper = jQuery('#conditional_' + field);
-			
 			if(!fieldwrapper.length){
 				continue;
 			}
@@ -61,11 +72,12 @@ var calders_forms_check_conditions, calders_forms_init_conditions;
 					}
 
 					truelines[lid] 	= false;
-					if( compareelement.is(':radio,:checkbox')){
+					if( compareelement.is(':radio,:checkbox') ){
 						compareelement = compareelement.filter(':checked');
 					}else if( compareelement.is('div')){
 						compareelement = jQuery('<input>').val( compareelement.html() );
 					}
+					
 					if(!compareelement.length){
 						comparefield.push(lines[lid].field);
 					}else{
@@ -174,40 +186,35 @@ var calders_forms_check_conditions, calders_forms_init_conditions;
 			}else if (action === 'enable'){
 				if(!target.html().length){					
 					target.html(template).trigger('cf.add');
-					jQuery(document).trigger('cf.add').trigger('cf.enable');
+					jQuery(document).trigger('cf.add').trigger('cf.enable');					
 				}else{
 					target_field.prop('disabled', false);
+					jQuery('#' + field).prop('disabled', false);
 				}
 			}else if (action === 'disable'){
+
 				if(!target.html().length){
 					target.html(template).trigger('cf.remove');
 					jQuery(document).trigger('cf.remove').trigger('cf.disable');
 					jQuery('[data-field="' + field + '"]').prop('disabled', 'disabled');
 				}else{
 					target_field.prop('disabled', 'disabled');
+					jQuery('#' + field).prop('disabled', 'disabled');
 				}
 			}
 
 		}	
 	}
-	
+
 	calders_forms_init_conditions = function(){
-		jQuery('.caldera_forms_form').on('change keyup', '[data-field]', function(e){
-			
+		jQuery('.caldera_forms_form').on('change keyup', '[data-field]', cf_debounce( function(e){
 			var form 			= $(this).closest('.caldera_forms_form').prop('id');
-
 			calders_forms_check_conditions( form );
-
-		});
-		// init
-		$('.caldera_forms_form').each( function(){
-			calders_forms_check_conditions( $(this).closest('.caldera_forms_form').prop('id') );
-		} );		
+		}, 10 ) );	
 	}
 
 	if(typeof caldera_conditionals !== 'undefined'){
-		
 		calders_forms_init_conditions();
-
-	}
+		jQuery('.caldera_forms_form').find('[data-field]').first().trigger('change');
+	}	
 })(jQuery);
